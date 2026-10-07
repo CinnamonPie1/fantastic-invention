@@ -13,7 +13,8 @@ jobs:
     steps:
       - name: Get project files
         uses: actions/checkout@v4
-
+      - name: Install Tkinter for Python
+        run: brew install python-tk@3.14
       - name: Run Mac build script
         run: |
           chmod +x build_onefile_mac.command
