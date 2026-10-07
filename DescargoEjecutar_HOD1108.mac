@@ -1,0 +1,331 @@
+<HAScript name="DescargoEjecutar_HOD1108" description="Ejecuta descargo de medicamentos desde payload de DescargoMedicacion" timeout="600000" pausetime="50" promptall="true" blockinput="true" author="" creationdate="" supressclearevents="false" usevars="true" ignorepauseforenhancedtn="true" delayifnotenhancedtn="0" ignorepausetimeforenhancedtn="true" continueontimeout="false">
+  <import>
+    <type class="java.lang.StringBuilder" name="SB" />
+    <type class="java.lang.System" name="JSystem" />
+    <type class="java.util.StringTokenizer" name="Tokenizer" />
+    <type class="java.awt.Toolkit" name="Toolkit" />
+    <type class="java.awt.datatransfer.Clipboard" name="Clipboard" />
+    <type class="java.awt.datatransfer.DataFlavor" name="DataFlavor" />
+    <type class="java.awt.datatransfer.StringSelection" name="StringSelection" />
+    <type class="java.awt.datatransfer.Transferable" name="Transferable" />
+  </import>
+  <vars>
+    <create name="$nl$" type="string" value="&apos;&apos;" />
+    <create name="$herramientas$" type="Toolkit" value="" />
+    <create name="$portapapeles$" type="Clipboard" value="" />
+    <create name="$saborTexto$" type="DataFlavor" value="" />
+    <create name="$contenidoTransferible$" type="Transferable" value="" />
+    <create name="$seleccion$" type="StringSelection" value="" />
+    <create name="$contenido$" type="string" value="&apos;&apos;" />
+    <create name="$selectTok$" type="Tokenizer" value="" />
+    <create name="$fillTok$" type="Tokenizer" value="" />
+    <create name="$cfgTok$" type="Tokenizer" value="" />
+    <create name="$medTok$" type="Tokenizer" value="" />
+    <create name="$tmp$" type="string" value="&apos;&apos;" />
+    <create name="$cfgLine$" type="string" value="&apos;&apos;" />
+    <create name="$currentLine$" type="string" value="&apos;&apos;" />
+    <create name="$currentCode$" type="string" value="&apos;&apos;" />
+    <create name="$currentQty$" type="string" value="&apos;&apos;" />
+    <create name="$msgAgotado$" type="string" value="&apos;&apos;" />
+    <create name="$guard$" type="string" value="&apos;&apos;" />
+    <create name="$agotados$" type="SB" value="$new SB()$" />
+    <create name="$respuesta$" type="SB" value="$new SB()$" />
+
+    <create name="$removePatient$" type="boolean" value="false" />
+    <create name="$removePatientNum$" type="integer" value="0" />
+    <create name="$count$" type="integer" value="0" />
+    <create name="$idx$" type="integer" value="0" />
+    <create name="$fillIdx$" type="integer" value="0" />
+    <create name="$fillPos$" type="integer" value="0" />
+    <create name="$filaActual$" type="integer" value="16" />
+    <create name="$esAgotado$" type="boolean" value="false" />
+    <create name="$esDosDigitos$" type="boolean" value="false" />
+    <create name="$qtyNum$" type="integer" value="0" />
+    <create name="$respuestaTexto$" type="string" value="&apos;&apos;" />
+    <create name="$errorGuard$" type="boolean" value="false" />
+
+    <create name="$searchRow$" type="integer" value="11" />
+    <create name="$searchCol$" type="integer" value="2" />
+    <create name="$row1$" type="integer" value="16" />
+    <create name="$row2$" type="integer" value="18" />
+    <create name="$row3$" type="integer" value="20" />
+    <create name="$colCantTens$" type="integer" value="17" />
+    <create name="$colCant$" type="integer" value="18" />
+    <create name="$colDosis$" type="integer" value="21" />
+    <create name="$colVia$" type="integer" value="30" />
+    <create name="$colFrecuencia$" type="integer" value="45" />
+    <create name="$colDuraCant$" type="integer" value="57" />
+    <create name="$colDuraUnidad$" type="integer" value="59" />
+    <create name="$guardRow$" type="integer" value="15" />
+    <create name="$guardCol$" type="integer" value="2" />
+    <create name="$guardLen$" type="integer" value="2" />
+    <create name="$agotadoRow$" type="integer" value="14" />
+    <create name="$agotadoCol$" type="integer" value="23" />
+    <create name="$agotadoLen$" type="integer" value="58" />
+    <create name="$pf4Delay$" type="integer" value="300" />
+    <create name="$pf4ConfirmDelay$" type="integer" value="200" />
+    <create name="$viaKey$" type="string" value="&apos;[pf4]&apos;" />
+  </vars>
+
+  <screen name="Inicializar" entryscreen="true" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions>
+      <varupdate name="$nl$" value="$JSystem.getProperty(&apos;line.separator&apos;)$" />
+      <varupdate name="$herramientas$" value="$Toolkit.getDefaultToolkit()$" />
+      <varupdate name="$portapapeles$" value="$herramientas.getSystemClipboard()$" />
+      <varupdate name="$saborTexto$" value="$new DataFlavor(&apos;application/x-java-serialized-object;class=java.lang.String&apos;)$" />
+      <varupdate name="$contenidoTransferible$" value="$portapapeles.getContents(null)$" />
+      <varupdate name="$contenido$" value="$contenidoTransferible.getTransferData($saborTexto$)$" />
+      <varupdate name="$selectTok$" value="$new Tokenizer($contenido$, $nl$)$" />
+      <varupdate name="$fillTok$" value="$new Tokenizer($contenido$, $nl$)$" />
+
+      <varupdate name="$tmp$" value="$selectTok.nextToken()$" />
+      <varupdate name="$cfgLine$" value="$selectTok.nextToken()$" />
+      <varupdate name="$tmp$" value="$fillTok.nextToken()$" />
+      <varupdate name="$tmp$" value="$fillTok.nextToken()$" />
+
+      <varupdate name="$cfgTok$" value="$new Tokenizer($cfgLine$, &apos;=|&apos;)$" />
+      <varupdate name="$tmp$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$removePatientNum$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$removePatient$" value="false" />
+      <if condition="$removePatientNum$ == 1"><varupdate name="$removePatient$" value="true" /></if>
+      <varupdate name="$count$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$searchRow$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$searchCol$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$row1$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$row2$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$row3$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$colCantTens$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$colCant$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$colDosis$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$colVia$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$colFrecuencia$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$colDuraCant$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$colDuraUnidad$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$guardRow$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$guardCol$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$guardLen$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$agotadoRow$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$agotadoCol$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$agotadoLen$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$pf4Delay$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$pf4ConfirmDelay$" value="$cfgTok.nextToken()$" />
+      <varupdate name="$viaKey$" value="$cfgTok.nextToken()$" />
+      <perform value="$agotados.setLength(0)$" />
+
+      <!-- ACK temprano: a partir de aquí el payload ya quedó leído en variables/tokenizers. -->
+      <varupdate name="$respuestaTexto$" value="&apos;###DESCARGO_HOD1108_EXEC_STARTED###&apos;" />
+      <varupdate name="$seleccion$" value="$new StringSelection($respuestaTexto$)$" />
+      <perform value="$portapapeles.setContents($seleccion$, $seleccion$)$" />
+
+      <input value="&apos;[pf3]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" />
+    </actions>
+    <nextscreens timeout="30000"><nextscreen name="NavRemove2" /><nextscreen name="NavNormal2" /></nextscreens><recolimit value="10000" />
+  </screen>
+
+  <screen name="NavNormal2" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /><condition value="!$removePatient$" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;8[enter]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="NavNormal3" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="NavNormal3" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;[pf6]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="NavNormal4" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="NavNormal4" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;1&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /><pause value="250" /><input value="&apos;[pf3]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="PrepararBusqueda" /></nextscreens><recolimit value="10000" />
+  </screen>
+
+  <screen name="NavRemove2" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /><condition value="$removePatient$" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;[pf3]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="NavRemove3" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="NavRemove3" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;15[enter]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="NavRemove4" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="NavRemove4" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;z000[enter]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="NavRemove5" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="NavRemove5" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;alt[enter]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="NavRemove6" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="NavRemove6" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;[enter]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="NavRemove7" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="NavRemove7" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;[enter]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="NavRemove8" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="NavRemove8" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;[pf6]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="NavRemove9" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="NavRemove9" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;1&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /><pause value="250" /><input value="&apos;[pf3]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="NavRemove10" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="NavRemove10" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;[pf14]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="PrepararBusqueda" /></nextscreens><recolimit value="10000" />
+  </screen>
+
+  <screen name="PrepararBusqueda" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions></actions>
+    <nextscreens timeout="60000"><nextscreen name="IrOrden" /><nextscreen name="LeerMedicamento" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="LeerMedicamento" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="DONTCARE" optional="false" invertmatch="false" /><condition value="$idx$ &lt; $count$" optional="false" invertmatch="false" /></description>
+    <actions>
+      <varupdate name="$currentLine$" value="$selectTok.nextToken()$" />
+      <varupdate name="$medTok$" value="$new Tokenizer($currentLine$, &apos;|&apos;)$" />
+      <varupdate name="$currentCode$" value="$medTok.nextToken()$" />
+      <varupdate name="$currentQty$" value="$medTok.nextToken()$" />
+      <if condition="!($removePatient$ &amp;&amp; $idx$ == 0)"><input value="&apos;[pf14]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /><pause value="75" /></if>
+      <input value="$currentCode$" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" />
+      <pause value="75" />
+    </actions>
+    <nextscreens timeout="5000"><nextscreen name="CodigoListo" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="CodigoListo" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /><string value="$currentCode$" row="$searchRow$" col="1" erow="$searchRow$" ecol="20" casesense="true" wrap="false" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;1[enter]&apos;" row="$searchRow$" col="$searchCol$" movecursor="true" xlatehostkeys="true" encrypted="false" /><pause value="200" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="EvaluarAgotado" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="EvaluarAgotado" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions></actions>
+    <nextscreens timeout="30000"><nextscreen name="AgotadoDetectado" /><nextscreen name="NoAgotadoDetectado" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="AgotadoDetectado" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="DONTCARE" optional="false" invertmatch="false" /><string value="&apos;AGOTADO&apos;" row="$agotadoRow$" col="$agotadoCol$" erow="$agotadoRow$" ecol="$agotadoCol$+$agotadoLen$-1" casesense="false" wrap="false" optional="false" invertmatch="false" /></description>
+    <actions>
+      <perform value="$agotados.append($currentCode$)$" />
+      <perform value="$agotados.append(&apos;;&apos;)$" />
+      <input value="&apos;[enter]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" />
+      <pause value="200" />
+      <varupdate name="$idx$" value="$idx$ + 1" />
+    </actions>
+    <nextscreens timeout="30000"><nextscreen name="EsperarCierreAgotado" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="NoAgotadoDetectado" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="DONTCARE" optional="false" invertmatch="false" /><string value="&apos;AGOTADO&apos;" row="$agotadoRow$" col="$agotadoCol$" erow="$agotadoRow$" ecol="$agotadoCol$+$agotadoLen$-1" casesense="false" wrap="false" optional="false" invertmatch="true" /></description>
+    <actions>
+      <input value="&apos;[enter]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" />
+      <pause value="200" />
+      <varupdate name="$idx$" value="$idx$ + 1" />
+    </actions>
+    <nextscreens timeout="30000"><nextscreen name="EsperarCierreAgotado" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="EsperarCierreAgotado" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /><string value="&apos;AGOTADO&apos;" row="$agotadoRow$" col="$agotadoCol$" erow="$agotadoRow$" ecol="$agotadoCol$+$agotadoLen$-1" casesense="false" wrap="false" optional="false" invertmatch="true" /></description>
+    <actions></actions>
+    <nextscreens timeout="5000"><nextscreen name="PrepararBusqueda" /></nextscreens><recolimit value="10000" />
+  </screen>
+
+  <screen name="IrOrden" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="DONTCARE" optional="false" invertmatch="false" /><condition value="$idx$ &gt;= $count$" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;[pf3]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /><pause value="100" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="PrepararLlenado" /></nextscreens><recolimit value="10000" />
+  </screen>
+
+  <screen name="PrepararLlenado" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions></actions>
+    <nextscreens timeout="60000"><nextscreen name="Terminar" /><nextscreen name="LeerCantidad" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="LeerCantidad" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="DONTCARE" optional="false" invertmatch="false" /><condition value="$fillIdx$ &lt; $count$" optional="false" invertmatch="false" /></description>
+    <actions>
+      <varupdate name="$currentLine$" value="$fillTok.nextToken()$" />
+      <varupdate name="$medTok$" value="$new Tokenizer($currentLine$, &apos;|&apos;)$" />
+      <varupdate name="$tmp$" value="$medTok.nextToken()$" />
+      <varupdate name="$currentQty$" value="$medTok.nextToken()$" />
+      <varupdate name="$qtyNum$" value="$currentQty$" />
+      <varupdate name="$esDosDigitos$" value="false" />
+      <if condition="$qtyNum$ &gt;= 10"><varupdate name="$esDosDigitos$" value="true" /></if>
+      <if condition="$fillPos$ == 0"><varupdate name="$filaActual$" value="$row1$" /></if>
+      <if condition="$fillPos$ == 1"><varupdate name="$filaActual$" value="$row2$" /></if>
+      <if condition="$fillPos$ == 2"><varupdate name="$filaActual$" value="$row3$" /></if>
+    </actions>
+    <nextscreens timeout="60000"><nextscreen name="LlenarFila" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="LlenarFila" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions>
+      <if condition="!$esDosDigitos$"><input value="$currentQty$" row="$filaActual$" col="$colCant$" movecursor="true" xlatehostkeys="true" encrypted="false" /></if>
+      <if condition="$esDosDigitos$"><input value="$currentQty$" row="$filaActual$" col="$colCantTens$" movecursor="true" xlatehostkeys="true" encrypted="false" /></if>
+
+      <input value="&apos;[eraseeof]&apos;" row="$filaActual$" col="$colDosis$" movecursor="true" xlatehostkeys="true" encrypted="false" />
+      <if condition="!$esDosDigitos$"><input value="$currentQty$" row="$filaActual$" col="$colDosis$" movecursor="true" xlatehostkeys="true" encrypted="false" /></if>
+      <if condition="$esDosDigitos$"><input value="$currentQty$" row="$filaActual$" col="$colDosis$" movecursor="true" xlatehostkeys="true" encrypted="false" /></if>
+
+      <input value="&apos;[tab]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" />
+      <pause value="50" />
+      <input value="$viaKey$" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" />
+      <pause value="$pf4Delay$" />
+      <input value="&apos;1[enter]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" />
+      <pause value="$pf4ConfirmDelay$" />
+
+      <input value="&apos;qd&apos;" row="$filaActual$" col="$colFrecuencia$" movecursor="true" xlatehostkeys="true" encrypted="false" />
+      <input value="&apos;1&apos;" row="$filaActual$" col="$colDuraCant$" movecursor="true" xlatehostkeys="true" encrypted="false" />
+      <input value="&apos;d&apos;" row="$filaActual$" col="$colDuraUnidad$" movecursor="true" xlatehostkeys="true" encrypted="false" />
+
+      <extract name="&apos;Guardia selector via&apos;" planetype="TEXT_PLANE" srow="$guardRow$" scol="$guardCol$" erow="$guardRow$" ecol="$guardCol$+$guardLen$-1" unwrap="false" continuous="false" assigntovar="$guard$" />
+      <varupdate name="$errorGuard$" value="false" />
+      <if condition="$guard$ != &apos;  &apos;"><varupdate name="$errorGuard$" value="true" /></if>
+
+      <varupdate name="$fillIdx$" value="$fillIdx$ + 1" />
+      <varupdate name="$fillPos$" value="$fillPos$ + 1" />
+      <if condition="$fillPos$ &gt;= 3 &amp;&amp; $fillIdx$ &lt; $count$"><input value="&apos;[pagedn]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /><pause value="100" /><varupdate name="$fillPos$" value="0" /></if>
+      <if condition="$fillPos$ &gt;= 3 &amp;&amp; $fillIdx$ &gt;= $count$"><varupdate name="$fillPos$" value="0" /></if>
+    </actions>
+    <nextscreens timeout="30000"><nextscreen name="ErrorGuard" /><nextscreen name="PrepararLlenado" /></nextscreens><recolimit value="10000" />
+  </screen>
+
+  <screen name="ErrorGuard" entryscreen="false" exitscreen="true" transient="false">
+    <description><oia status="DONTCARE" optional="false" invertmatch="false" /><condition value="$errorGuard$" optional="false" invertmatch="false" /></description>
+    <actions>
+      <perform value="$respuesta.setLength(0)$" />
+      <perform value="$respuesta.append(&apos;###DESCARGO_HOD1108_EXEC_ERROR###&apos;)$" />
+      <perform value="$respuesta.append($nl$)$" />
+      <perform value="$respuesta.append(&apos;GUARD=&apos;)$" />
+      <perform value="$respuesta.append($guard$)$" />
+      <varupdate name="$respuestaTexto$" value="$respuesta.toString()$" />
+      <varupdate name="$seleccion$" value="$new StringSelection($respuestaTexto$)$" />
+      <perform value="$portapapeles.setContents($seleccion$, $seleccion$)$" />
+    </actions>
+    <nextscreens timeout="0"></nextscreens><recolimit value="10000" />
+  </screen>
+
+  <screen name="Terminar" entryscreen="false" exitscreen="true" transient="false">
+    <description><oia status="DONTCARE" optional="false" invertmatch="false" /><condition value="$fillIdx$ &gt;= $count$" optional="false" invertmatch="false" /></description>
+    <actions>
+      <perform value="$respuesta.setLength(0)$" />
+      <perform value="$respuesta.append(&apos;###DESCARGO_HOD1108_EXEC_OK###&apos;)$" />
+      <perform value="$respuesta.append($nl$)$" />
+      <perform value="$respuesta.append(&apos;AGOTADOS=&apos;)$" />
+      <perform value="$respuesta.append($agotados.toString()$)$" />
+      <varupdate name="$respuestaTexto$" value="$respuesta.toString()$" />
+      <varupdate name="$seleccion$" value="$new StringSelection($respuestaTexto$)$" />
+      <perform value="$portapapeles.setContents($seleccion$, $seleccion$)$" />
+    </actions>
+    <nextscreens timeout="0"></nextscreens><recolimit value="10000" />
+  </screen>
+</HAScript>

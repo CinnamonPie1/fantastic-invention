@@ -1,0 +1,768 @@
+{
+  "session_name": "ACS 5250 activo",
+  "catalog_path": "farmacos.csv",
+  "timeout_seconds": 15,
+  "screen_coords": {
+    "search_result_row": 11,
+    "search_result_col": 2,
+    "order_rows": [
+      16,
+      18,
+      20
+    ],
+    "col_cant_tens": 17,
+    "col_cant": 18,
+    "col_dosis": 21,
+    "col_via": 30,
+    "col_frecuencia": 45,
+    "col_dura_cant": 57,
+    "col_dura_unidad": 59,
+    "pf4_popup_delay_seconds": 0.05,
+    "pf4_confirm_delay_seconds": 0.05,
+    "guard_row": 15,
+    "guard_col": 2,
+    "guard_len": 2,
+    "via_selector_key": "[pf4]",
+    "dependencia_first_row": 11,
+    "dependencia_last_row": 24,
+    "dependencia_name_col": 14,
+    "dependencia_name_len": 40,
+    "dependencia_opc_col": 2,
+    "patient_page_notes_row": 13,
+    "patient_page_opc_col": 2,
+    "dependencia_avpag_key": "[pf8]",
+    "dependencia_repag_key": "[pf7]",
+    "agotado_msg_row": 14,
+    "agotado_msg_col": 23,
+    "agotado_msg_len": 60,
+    "agotado_check_delay_seconds": 0.2
+  },
+  "fuzzy_cutoff": 1.0,
+  "name_synonyms": {
+    "SOLUCION SALINA": "CLORURO",
+    "SOL SALINA": "CLORURO DE SODIO",
+    "SS0.9": "CLORURO DE SODIO",
+    "SSN": "CLORURO DE SODIO",
+    "ONDANSENTRON": "ONDANSETRON",
+    "-LAMOTRIGINA": "LAMOTRIGINA",
+    "RISPERIDONA TABLETAS": "RISPERIDONA",
+    "INSULINA NPH": "INSULINA",
+    "AMLODIPINO": "AMLODIPINA",
+    "CLORURO DE SODIO": "CLORURO",
+    "ADMINISTRAR DEXTROSA EN AGUA AL": "CARBOHIDRATOS",
+    "CLORURO DE SODIO AL": "CLORURO",
+    "INICIO DE ANTIBIOTICO CEFTRIAXONA": "CEFTRIAXONA",
+    "AMLODIPONO": "AMLODIPINA",
+    "HTA TTO LOSARTAN": "LOSARTAN",
+    "AMPICILINA SULBACTAM": "AMPICILINA",
+    "HIPERTENSION ARTERIAL EN TRATAMIENTO CON LOSARTAN": "LOSARTAN",
+    "INSULINA NPH A": "INSULINA",
+    "AMOXICILINA AC CLAVULANICO": "AMOXICILINA",
+    "OMEPRAZOL SODICO": "OMEPRAZOL",
+    "LACTATO RINGER": "COMBINACIONES",
+    "BAJA DOSIS DE LOSARTAN": "LOSARTAN",
+    "PROPANOLOL": "PROPRANOLOL",
+    "MANTENER SUSPENDIDO LOSARTAN": "LOSARTAN",
+    "ACIDO VALPROICO": "ACIDO",
+    "LIQUIDO": "KETOROLACO",
+    "ONDASETRON": "ONDANSETRON",
+    "INICIO DE ASPIRINA": "ACIDO",
+    "NEBULIZACIONES": "IPRATROPIO",
+    "SULBACTAM": "AMPICILINA",
+    "RISPERIDONA GOTERO": "RISPERIDONA",
+    "MANTENER LEVETIRACETAM": "LEVETIRACETAM",
+    "SUPLEMENTO DE POTASIO": "CLORURO",
+    "A DAPAGLIFOZINA TAB": "DAPAGLIFLOZINA",
+    "B CARVEDILOL TAB": "CARVEDILOL",
+    "C INSULINA NPH": "INSULINA",
+    "D FUROSEMIDA TAB": "FUROSEMIDA",
+    "E SIMVASTATINA TAB": "SIMVASTATINA",
+    "F LEVOTIROXINA TAB": "LEVOTIROXINA",
+    "G CLORTALIDONA TAB": "CLORTALIDONA",
+    "HIPOTIROIDISMO MAL TRATADO LEVOTIROXINA": "LEVOTIROXINA",
+    "180": "MICOFENOLATO",
+    "INICIAR QUETIAPINA": "QUETIAPINA",
+    "HIPOTIROIDISMO DESDE HACE": "LEVOTIROXINA",
+    "CITRATO DE CALCIO OSTEOBLASTOL": "CALCIO",
+    "FILGASTRIM": "FILGRASTIM",
+    "NBZ CON": "CLORURO",
+    "K DE": "CLORURO",
+    "EN CASO DE PRESENTAR OLIGURIA INICIAR FUROSEMIDA": "FUROSEMIDA",
+    "TRAMAL": "TRAMADOL",
+    "AMITRIPTILINA ANAPSIQUE": "AMITRIPTILINA",
+    "NEBULIZACIONES CON": "CLORURO",
+    "QUETIAPINA TABLETAS DE": "QUETIAPINA",
+    "QUETIAPINA TABLETAS": "QUETIAPINA",
+    "RISPERIDONA SOLUCION": "RISPERIDONA",
+    "LACTATO DE RINGER": "COMBINACIONES",
+    "OMEPRAZOL": "CLORURO",
+    "KETROLACO": "KETOROLACO",
+    "A GABAPENTINA": "GABAPENTINA",
+    "B NITROFURANTOINA": "NITROFURANTOINA",
+    "C ACIDO ACETILSALICILICO": "ACIDO",
+    "D SERTRALINA": "SERTRALINA",
+    "F AMLODIPINO": "AMLODIPINA",
+    "G LEVOTIROXINA": "LEVOTIROXINA",
+    "H QUETIAPINA": "QUETIAPINA",
+    "I LOSARTAN": "LOSARTAN",
+    "J ESPIRONOLACTONA": "ESPIRONOLACTONA",
+    "K CLONAZEPAM": "CLONAZEPAM",
+    "MROPENEM": "MEROPENEM",
+    "PREPARACION DE SOLUCION PHILADELPHIA": "MAGALDRATO",
+    "+": "LIDOCAINA",
+    "HIPORITOIDISMO CON TTO A BASE DE LEVOTIROXINA": "LEVOTIROXINA",
+    "GAPAPENTINA": "GABAPENTINA",
+    "DE CLORURO DE SODIO": "CLORURO",
+    "OCTREOTIDE": "OCTREOTIDA",
+    "SODIO": "CLORURO",
+    "SOLUCION SALINA AL": "CLORURO",
+    "MRETRONIDAZOL": "METRONIDAZOL",
+    "COMPLEJO B": "COMPLEJO",
+    "A LOSARTAN": "LOSARTAN",
+    "B CLORTALIDONA": "CLORTALIDONA",
+    "C TAMSULOSINA DUTASTERIDA": "DUTASTERIDA",
+    "CLONAZEPAM SOLUCION": "CLONAZEPAM",
+    "DEXTROSA AL": "CARBOHIDRATOS",
+    "B SIMVASTATINA": "SIMVASTATINA",
+    "A DEXTROSA AL": "CARBOHIDRATOS",
+    "B DEXTROSA AL": "CARBOHIDRATOS",
+    "C AMINOACIDOS AL": "AMINOACIDOS",
+    "D LIPIDOS AL": "EMULSIONES",
+    "E SOLETROL NA": "CLORURO",
+    "F SOLETROL K": "CLORURO",
+    "H GLUCONATO CA": "CALCIO",
+    "I ACIDO ASCORBICO": "ACIDO",
+    "J COMPLEJO B": "COMPLEJO",
+    "K HEPARINA SODICA": "HEPARINA",
+    "LOSATAN": "LOSARTAN",
+    "AMOXICILINA ACIDO CLAVULANICO": "AMOXICILINA",
+    "ACIDO CLAVULANICO": "AMOXICILINA",
+    "SULFALACINA": "SULFASALAZINA",
+    "FUNCION RENAL SIN DETERIORO SIGNIFICATIVO CON CREATININA": "EPINEFRINA",
+    "AMINOACIDOS AL": "AMINOACIDOS",
+    "LIPIDOS AL": "EMULSIONES",
+    "SOLETROL NA": "CLORURO",
+    "SOLETROL K": "CLORURO",
+    "GLUCONATO CA": "CALCIO",
+    "HEPARINA SODICA": "HEPARINA"
+  },
+  "route_synonyms": {
+    "IV": "PARENTERAL",
+    "EV": "PARENTERAL",
+    "INTRAVENOSO": "PARENTERAL",
+    "INTRAVENOSA": "PARENTERAL",
+    "VENOSA": "PARENTERAL",
+    "VIA VENOSA": "PARENTERAL",
+    "SC": "PARENTERAL",
+    "SUBCUTANEA": "PARENTERAL",
+    "IM": "PARENTERAL",
+    "INTRAMUSCULAR": "PARENTERAL",
+    "VIA ORAL": "ORAL",
+    "PO": "ORAL",
+    "ORAL": "ORAL"
+  },
+  "note_font_size": 10,
+  "theme": "light",
+  "bookmarks": [
+    {
+      "codigo": "3305024",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 0,9% X",
+      "presentacion": "SOL.INY. 0,9% FUN/BOL X 100 ML"
+    }
+  ],
+  "exact_matches": {
+    "- ENOXAPARINA LIQUIDO PARENTERAL 40 MILIGRAMOS VIA SUBCUTANEA CADA DIA": {
+      "codigo": "3301003",
+      "descripcion": "ENOXAPARINA LQ.PAR. 4.000 UI (40",
+      "presentacion": "SOL.INY. 4.000 UI (40 MG) CJ X"
+    },
+    "- NISTATINA LIQUIDO ORAL 5 ML (LAVADOS) CADA 8 HORAS.": {
+      "codigo": "3207001",
+      "descripcion": "NISTATINA LIQ ORAL 100.000 UI/ML",
+      "presentacion": "JBE/SOL/SUSP. 100.000 UI/ML CJ"
+    },
+    "QUETIAPINA TABLETAS DE 25 MG: ADMINISTRAR UNA TABLETA CADA 8 AM": {
+      "codigo": "4105016",
+      "descripcion": "QUETIAPINA SOLIDO ORAL",
+      "presentacion": "TAB/CAP/COMP. 300 MG CJ X BLIST"
+    },
+    "QUETIAPINA TABLETAS 50 MG ADMINSITRAR 1 TABLETA VIA ORAL 8 PM HORAS.": {
+      "codigo": "4105016",
+      "descripcion": "QUETIAPINA SOLIDO ORAL",
+      "presentacion": "TAB/CAP/COMP. 300 MG CJ X BLIST"
+    },
+    "RISPERIDONA SOLUCION ORAL 1 MG/ML: ADMINISTRAR 10 GOTAS A LAS 18:00 Y 5": {
+      "codigo": "4105022",
+      "descripcion": "RISPERIDONA LIQUIDO ORAL",
+      "presentacion": "JBE/SOL/SUSP. 1 MG/ML CJ X FCO"
+    },
+    "NISTATINA LIQUIDO ORAL 100.000 U JBE/SOL/SUSP. 100.000 UI/ML CJ": {
+      "codigo": "3207001",
+      "descripcion": "NISTATINA LIQ ORAL 100.000 UI/ML",
+      "presentacion": "JBE/SOL/SUSP. 100.000 UI/ML CJ"
+    },
+    "ENOXAPARINA LIQUIDO PARENTERAL 4 SOL.INY. 4.000 UI (40 MG) CJ X": {
+      "codigo": "3301003",
+      "descripcion": "ENOXAPARINA LQ.PAR. 4.000 UI (40",
+      "presentacion": "SOL.INY. 4.000 UI (40 MG) CJ X"
+    },
+    "LACTATO DE RINGER 1000 CC PASAR A 60ML/H": {
+      "codigo": "3305029",
+      "descripcion": "COMBINACIONES (LACTATO DE RINGER",
+      "presentacion": "SOL.INY. N/D FUN/BOL X 1.000 ML"
+    },
+    "OMEPRAZOL 80MG VV STAT": {
+      "codigo": "3202006",
+      "descripcion": "OMEPRAZOL SOLIDO PARENTERAL",
+      "presentacion": "POL.INY. 40 MG CJ X VIAL(ES) C/"
+    },
+    "OMEPRAZOL 80MG DILUIDO EN 80ML DE CLORURO DE SODIO 0.9% PASAR A 8ML/H": {
+      "codigo": "3305024",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 0,9% X",
+      "presentacion": "SOL.INY. 0,9% FUN/BOL X 100 ML"
+    },
+    "KETROLACO 30 MG IV STAT": {
+      "codigo": "4001003",
+      "descripcion": "KETOROLACO LIQUIDO PARENTERAL",
+      "presentacion": "SOL.INY. 30 MG/ML CJ X AMP(S) X"
+    },
+    "OMEPRAZOL 80 MG IV STAT": {
+      "codigo": "3202006",
+      "descripcion": "OMEPRAZOL SOLIDO PARENTERAL",
+      "presentacion": "POL.INY. 40 MG CJ X VIAL(ES) C/"
+    },
+    "SULBACTAM 1. 5 GR IV CADA 6 HORAS (0)": {
+      "codigo": "3801018",
+      "descripcion": "AMPICILINA + SULBACTAM SOLIDO PA",
+      "presentacion": "POL.INY. 1.000 MG + 500 MG CJ X"
+    },
+    "A. GABAPENTINA 300 MG QD VO PM": {
+      "codigo": "4103024",
+      "descripcion": "GABAPENTINA SOLIDO ORAL",
+      "presentacion": "TAB/CAP/COMP. 300 MG CJ X BLIST"
+    },
+    "B. NITROFURANTOINA 100MG VO QD PM": {
+      "codigo": "3801081",
+      "descripcion": "NITROFURANTOINA SOLIDO ORAL",
+      "presentacion": "TAB/CAP/COMP. 100 MG CJ X BLIST"
+    },
+    "C. ACIDO ACETILSALICILICO 100 MG VO QD PM (SUSPENDER)": {
+      "codigo": "3301013",
+      "descripcion": "ACIDO ACETIL SALICILICO SOLIDO O",
+      "presentacion": "TAB/CAP/COMP. 100 MG CJ X BLIST"
+    },
+    "D. SERTRALINA 50 MG VO QD AM": {
+      "codigo": "4106004",
+      "descripcion": "SERTRALINA SOLIDO ORAL",
+      "presentacion": "TAB/CAP/COMP. 50 MG CJ X BLIST("
+    },
+    "F. AMLODIPINO 5 MG QD VO PM": {
+      "codigo": "3408001",
+      "descripcion": "AMLODIPINA SOLIDO ORAL 5 MG",
+      "presentacion": "TAB/CAP/COMP. 5 MG CJ X BLIST(E"
+    },
+    "G. LEVOTIROXINA 100 MCG VO AM": {
+      "codigo": "3703004",
+      "descripcion": "LEVOTIROXINA SODICA SOLIDO ORAL",
+      "presentacion": "TAB/CAP/COMP. 0,100 MG CJ X BLI"
+    },
+    "H. QUETIAPINA 25 MG VO PM": {
+      "codigo": "4105014",
+      "descripcion": "QUETIAPINA SOLIDO ORAL",
+      "presentacion": "TAB/CAP/COMP. 100 MG CJ X BLIST"
+    },
+    "I. LOSARTAN 100 MG AM VO": {
+      "codigo": "3409006",
+      "descripcion": "LOSARTAN SOLIDO ORAL 100 MG",
+      "presentacion": "TAB/CAP/COMP. 100 MG CJ X BLIST"
+    },
+    "J. ESPIRONOLACTONA 25 MG PM": {
+      "codigo": "3403005",
+      "descripcion": "ESPIRONOLACTONA SOLIDO ORAL 25 M",
+      "presentacion": "TAB/CAP/COMP. 25 MG CJ X BLIST("
+    },
+    "K. CLONAZEPAM 2 MG VO PM .": {
+      "codigo": "4103010",
+      "descripcion": "CLONAZEPAM SOLIDO ORAL",
+      "presentacion": "TAB/CAP/COMP. 2 MG CJ X BLIST(E"
+    },
+    "MROPENEM 1 GRAMO VIA VENOSA CADA 8 HORAS (INICIA 05/08/2026)": {
+      "codigo": "3801037",
+      "descripcion": "MEROPENEM SOLIDO PARENTERAL",
+      "presentacion": "POL.INY. 1.000 MG CJ X VIAL(ES)"
+    },
+    "**PREPARACION DE SOLUCION PHILADELPHIA (30 ML DE MAGALDRATO + 30 ML LORATADINA": {
+      "codigo": "3202001",
+      "descripcion": "MAGALDRATO CON SIMETICONA (HIDRO",
+      "presentacion": "JBE/SOL/SUSP. 800 MG/10 ML + 60"
+    },
+    "+ 5 ML DE LIDOCAINA SIN EPINEFRINA, 30 ML DE NISTATINA)": {
+      "codigo": "4101016",
+      "descripcion": "LIDOCAINA S/EPIN. LQ.PAR. 2% - 5",
+      "presentacion": "SOL.INY. 2% CJ X VIAL(ES) X 50"
+    },
+    "LACTATO DE RINGER IV A 100 ML/H": {
+      "codigo": "3305029",
+      "descripcion": "COMBINACIONES (LACTATO DE RINGER",
+      "presentacion": "SOL.INY. N/D FUN/BOL X 1.000 ML"
+    },
+    "HIPORITOIDISMO CON TTO A BASE DE LEVOTIROXINA 25 MCG VO QD": {
+      "codigo": "3703001",
+      "descripcion": "LEVOTIROXINA SODICA SOLIDO ORAL",
+      "presentacion": "TAB/CAP/COMP. 0,050 MG CJ X BLI"
+    },
+    "CLORURO DE SODIO 0.9% 1000 ML IV PASAR A 40 ML/H": {
+      "codigo": "3305027",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 0,9% X",
+      "presentacion": "SOL.INY. 0,9% FUN/BOL X 1.000 M"
+    },
+    "OMEPRAZOL 40 MG IV QD": {
+      "codigo": "3202006",
+      "descripcion": "OMEPRAZOL SOLIDO PARENTERAL",
+      "presentacion": "POL.INY. 40 MG CJ X VIAL(ES) C/"
+    },
+    "CEFTAZIDIMA 1 GRAMO IV CADA 8 HORAS (DIA 1)": {
+      "codigo": "3801032",
+      "descripcion": "CEFTAZIDIMA SOLIDO PARENTERAL",
+      "presentacion": "POL.INY. 1.000 MG CJ X VIAL(ES)"
+    },
+    "GAPAPENTINA 300 MG VIA ORAL CADA DIA": {
+      "codigo": "4103024",
+      "descripcion": "GABAPENTINA SOLIDO ORAL",
+      "presentacion": "TAB/CAP/COMP. 300 MG CJ X BLIST"
+    },
+    "CLORURO DE SODIO 0.9% 1000 ML INTRAVENOSO PASAR A 40 ML/H": {
+      "codigo": "3305027",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 0,9% X",
+      "presentacion": "SOL.INY. 0,9% FUN/BOL X 1.000 M"
+    },
+    "TRAMADOL 200MG": {
+      "codigo": "4102025",
+      "descripcion": "TRAMADOL LIQUIDO PARENTERAL",
+      "presentacion": "SOL.INY. 50 MG/ML CJ X AMP(S) X"
+    },
+    "ONDANSETRON 8 MG PASAR": {
+      "codigo": "3204004",
+      "descripcion": "ONDANSETRON LQ.PAR. 2 MG/ML X 4",
+      "presentacion": "SOL.INY. 2 MG/ML CJ X AMP(S) X"
+    },
+    "OMEPRAZOL 40 MG VIA VENOSA QD": {
+      "codigo": "3202006",
+      "descripcion": "OMEPRAZOL SOLIDO PARENTERAL",
+      "presentacion": "POL.INY. 40 MG CJ X VIAL(ES) C/"
+    },
+    "ENOXAPARINA 40 UI VSC QD (SUSPENDER 12 HORAS PREVIO PROCEDIMIENTO": {
+      "codigo": "3301003",
+      "descripcion": "ENOXAPARINA LQ.PAR. 4.000 UI (40",
+      "presentacion": "SOL.INY. 4.000 UI (40 MG) CJ X"
+    },
+    "OMEPRAZOL 80 MG VIA VENOSA STAT Y LUEGO INICIAR BOMBA CON OTROS 80 MG EN 80 ML": {
+      "codigo": "3202006",
+      "descripcion": "OMEPRAZOL SOLIDO PARENTERAL",
+      "presentacion": "POL.INY. 40 MG CJ X VIAL(ES) C/"
+    },
+    "DE CLORURO DE SODIO 0.9% A 8 ML/HORA.": {
+      "codigo": "3305024",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 0,9% X",
+      "presentacion": "SOL.INY. 0,9% FUN/BOL X 100 ML"
+    },
+    "OCTREOTIDE 50 MCG EN BOLO Y LUEGO 5 AMPOLLAS (500 MCG) EN 250 ML DE CLORURO DE": {
+      "codigo": "3701007",
+      "descripcion": "OCTREOTIDA SOLIDO PARENTERAL",
+      "presentacion": "POL.INY. 20 MG CJ X VIAL(ES) C/"
+    },
+    "SODIO 0.9% VIA VENOSA EN INFUSION CONTINUA PASAR A 12.5 ML/HORA (25 MCG/HORA).": {
+      "codigo": "3305027",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 0,9% X",
+      "presentacion": "SOL.INY. 0,9% FUN/BOL X 1.000 M"
+    },
+    "SOLUCION SALINA AL 0,9% PASAR IV A 60 ML /H": {
+      "codigo": "3305027",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 0,9% X",
+      "presentacion": "SOL.INY. 0,9% FUN/BOL X 1.000 M"
+    },
+    "OMEPRAZOL 40 MG IV CADA DIA": {
+      "codigo": "3202006",
+      "descripcion": "OMEPRAZOL SOLIDO PARENTERAL",
+      "presentacion": "POL.INY. 40 MG CJ X VIAL(ES) C/"
+    },
+    "CLORURO DE SODIO 0.9% 250 ML": {
+      "codigo": "3305025",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 0,9% X",
+      "presentacion": "SOL.INY. 0,9% FUN/BOL X 250 ML"
+    },
+    "SOLUCION SALINA AL 0,9% PASAR IV A 80 ML /H": {
+      "codigo": "3305027",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 0,9% X",
+      "presentacion": "SOL.INY. 0,9% FUN/BOL X 1.000 M"
+    },
+    "LEVOTIROXINA 50MCG QD": {
+      "codigo": "3703001",
+      "descripcion": "LEVOTIROXINA SODICA SOLIDO ORAL",
+      "presentacion": "TAB/CAP/COMP. 0,050 MG CJ X BLI"
+    },
+    "MRETRONIDAZOL 500MG IV C8H (0)": {
+      "codigo": "3801083",
+      "descripcion": "METRONIDAZOL LIQUIDO PARENTERAL",
+      "presentacion": "SOL.INY. 5 MG/ML FCO X 100 ML P"
+    },
+    "OMEPRAZOL 40MG IV CADA DIA": {
+      "codigo": "3202006",
+      "descripcion": "OMEPRAZOL SOLIDO PARENTERAL",
+      "presentacion": "POL.INY. 40 MG CJ X VIAL(ES) C/"
+    },
+    "SOLUCION SALINA 0.9% 2000 ML VIA VENOSA A 80ML/H": {
+      "codigo": "3305027",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 0,9% X",
+      "presentacion": "SOL.INY. 0,9% FUN/BOL X 1.000 M"
+    },
+    "OMEPRAZOL 40 MG IV CADA 12 HORAS": {
+      "codigo": "3202006",
+      "descripcion": "OMEPRAZOL SOLIDO PARENTERAL",
+      "presentacion": "POL.INY. 40 MG CJ X VIAL(ES) C/"
+    },
+    "AMPICILINA + SULBACTAM 1.5 GR IV CADA 8 HORAS (2)": {
+      "codigo": "3801018",
+      "descripcion": "AMPICILINA + SULBACTAM SOLIDO PA",
+      "presentacion": "POL.INY. 1.000 MG + 500 MG CJ X"
+    },
+    "COMPLEJO B 5ML VIA VENOSA CADA DIA": {
+      "codigo": "3211010",
+      "descripcion": "COMPLEJO B LQ.PAR. N/D X 10 ML",
+      "presentacion": "SOL.INY. (B1: 100 MG|B6: 100 MG"
+    },
+    "A. LOSARTAN 100 MG VO CADA 24 HORAS INICIAR EL DIA DE HOY": {
+      "codigo": "3409005",
+      "descripcion": "LOSARTAN SOLIDO ORAL 50 MG",
+      "presentacion": "TAB/CAP/COMP. 50 MG CJ X BLIST("
+    },
+    "B. CLORTALIDONA 50 MG VO CADA 24 HORAS. (SUSPENDIDO HASTA NUEVA ORDEN)": {
+      "codigo": "3403002",
+      "descripcion": "CLORTALIDONA SOLIDO ORAL  50 MG",
+      "presentacion": "TAB/CAP/COMP. 50 MG CJ X BLIST("
+    },
+    "C. TAMSULOSINA/DUTASTERIDA 0,4/0,5 MG. INICIR EL DIA DE HOY": {
+      "codigo": "3604004",
+      "descripcion": "DUTASTERIDA SOLIDO ORAL 0,5 MG",
+      "presentacion": "TAB/CAP/COMP. 0,5 MG CJ X BLIST"
+    },
+    "SULBACTAM 1.5 GRAMO IV CADA 8 HORAS (1)": {
+      "codigo": "3801018",
+      "descripcion": "AMPICILINA + SULBACTAM SOLIDO PA",
+      "presentacion": "POL.INY. 1.000 MG + 500 MG CJ X"
+    },
+    "CLONAZEPAM SOLUCION ORAL 2.5MG/ML: 3 GTS VO HS": {
+      "codigo": "4103011",
+      "descripcion": "CLONAZEPAM LIQUIDO ORAL",
+      "presentacion": "JBE/SOL/SUSP. 2,5 MG/ML CJ X FC"
+    },
+    "DEXTROSA AL 5% EN SOLUCION SALINA AL 0,9% IV PASAR A 60 ML/H": {
+      "codigo": "3305016",
+      "descripcion": "CARBOHIDRATOS (DEXTROSA EN AGUA)",
+      "presentacion": "SOL.INY. 5% FUN/BOL X 1.000 ML"
+    },
+    "SULBACTAM 1 ,5 GR VIA VENOSA CADA 6 HORAS (4)": {
+      "codigo": "3801018",
+      "descripcion": "AMPICILINA + SULBACTAM SOLIDO PA",
+      "presentacion": "POL.INY. 1.000 MG + 500 MG CJ X"
+    },
+    "OMEPRAZOL 40 MG VIA VENOSA UNA VEZ AL DIA": {
+      "codigo": "3202006",
+      "descripcion": "OMEPRAZOL SOLIDO PARENTERAL",
+      "presentacion": "POL.INY. 40 MG CJ X VIAL(ES) C/"
+    },
+    "LEVOTIROXINA 75 MCG VIA ORAL UNA VEZ POR DIA": {
+      "codigo": "3703004",
+      "descripcion": "LEVOTIROXINA SODICA SOLIDO ORAL",
+      "presentacion": "TAB/CAP/COMP. 0,100 MG CJ X BLI"
+    },
+    "SOLUCION SALINA 0.9% 1500CC VIA VENOSA PASAR A 60ML/H": {
+      "codigo": "3305027",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 0,9% X",
+      "presentacion": "SOL.INY. 0,9% FUN/BOL X 1.000 M"
+    },
+    "AMPICILINA / SULBACTAM 1.5GR INTRAVENOSO CADA 8 HORAS (2)": {
+      "codigo": "3801018",
+      "descripcion": "AMPICILINA + SULBACTAM SOLIDO PA",
+      "presentacion": "POL.INY. 1.000 MG + 500 MG CJ X"
+    },
+    "OMEPRAZOL 40MG INTRAVENOSO QD": {
+      "codigo": "3202006",
+      "descripcion": "OMEPRAZOL SOLIDO PARENTERAL",
+      "presentacion": "POL.INY. 40 MG CJ X VIAL(ES) C/"
+    },
+    "PARACETAMOL 1 GR VIA ORAL PRN": {
+      "codigo": "4102027",
+      "descripcion": "PARACETAMOL SOLIDO ORAL",
+      "presentacion": "TAB/CAP/COMP. 500 MG CJ X BLIST"
+    },
+    "OMEPRAZOL 40 MG VIA VENOSA UNA VEZ POR DIA": {
+      "codigo": "3202006",
+      "descripcion": "OMEPRAZOL SOLIDO PARENTERAL",
+      "presentacion": "POL.INY. 40 MG CJ X VIAL(ES) C/"
+    },
+    "CARVEDILOL 12.5 MG VO BID (PREVIA VALORACION MEDICA)": {
+      "codigo": "3407008",
+      "descripcion": "CARVEDILOL SOLIDO ORAL 12,5 MG",
+      "presentacion": "TAB/CAP/COMP. 12,5 MG CJ X BLIS"
+    },
+    "B. SIMVASTATINA 40MG VIA ORAL QD": {
+      "codigo": "3410002",
+      "descripcion": "SIMVASTATINA SOLIDO ORAL 40 MG",
+      "presentacion": "TAB/CAP/COMP. 40 MG CJ X BLIST("
+    },
+    "A. DEXTROSA AL 10% EN H2O 300ML": {
+      "codigo": "3305017",
+      "descripcion": "CARBOHIDRATOS (DEXTROSA EN AGUA)",
+      "presentacion": "SOL.INY. 10% FUN/BOL X 500 ML F"
+    },
+    "B. DEXTROSA AL 5% EN H2O 900ML": {
+      "codigo": "3305016",
+      "descripcion": "CARBOHIDRATOS (DEXTROSA EN AGUA)",
+      "presentacion": "SOL.INY. 5% FUN/BOL X 1.000 ML"
+    },
+    "C. AMINOACIDOS AL 15% 250ML": {
+      "codigo": "3305010",
+      "descripcion": "AMINOACIDOS LQ.PAR. 15% X 500 ML",
+      "presentacion": "SOL.INY. 15% CJ X FCO/FUN X 500"
+    },
+    "D. LIPIDOS AL 20% 300ML": {
+      "codigo": "3305013",
+      "descripcion": "EMULSIONES GRASAS (LIPIDOS) LQ.P",
+      "presentacion": "SUSP/EMUL.INY. 20% FCO DE VIDRI"
+    },
+    "E. SOLETROL NA 60 ML": {
+      "codigo": "3305062",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 3,4 MEQ",
+      "presentacion": "SOL.INY. 3,4 MEQ/ML (20%) CJ X"
+    },
+    "F. SOLETROL K 40ML": {
+      "codigo": "3305076",
+      "descripcion": "CLORURO DE POTASIO LQ.PAR. 2 MEQ",
+      "presentacion": "SOL.INY. 2 MEQ/ML (14,9%) CJ X"
+    },
+    "H. GLUCONATO CA 20ML": {
+      "codigo": "3212001",
+      "descripcion": "CALCIO GLUCONATO LIQUIDO PARENTE",
+      "presentacion": "SOL.INY. 10% CJ X AMP(S) X 10 M"
+    },
+    "I. ACIDO ASCORBICO 2ML": {
+      "codigo": "3211013",
+      "descripcion": "ACIDO ASCORBICO LIQUIDO PARENTER",
+      "presentacion": "SOL.INY. 100 MG/ML CJ X AMP(S)"
+    },
+    "J. COMPLEJO B 5ML": {
+      "codigo": "3211010",
+      "descripcion": "COMPLEJO B LQ.PAR. N/D X 10 ML",
+      "presentacion": "SOL.INY. (B1: 100 MG|B6: 100 MG"
+    },
+    "K. HEPARINA SODICA 0.01 ML": {
+      "codigo": "3301007",
+      "descripcion": "HEPARINA (NO FRACCIONADA) LQ.PAR",
+      "presentacion": "SOL.INY. 5.000 UI/ML CJ X VIAL("
+    },
+    "SOLUCION SALINA AL 0.9% PASAR 1000CC IV CADA 12 HORAS A 80 ML HORA": {
+      "codigo": "3305027",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 0,9% X",
+      "presentacion": "SOL.INY. 0,9% FUN/BOL X 1.000 M"
+    },
+    "SULBACTAM LIQUIDO PARENTERAL 1.5 GR IV CADA 8 HORAS": {
+      "codigo": "3801018",
+      "descripcion": "AMPICILINA + SULBACTAM SOLIDO PA",
+      "presentacion": "POL.INY. 1.000 MG + 500 MG CJ X"
+    },
+    "ONDASETRON LIQUIDO PARENTERAL 8 MG IV CADA 8 HORAS": {
+      "codigo": "3204004",
+      "descripcion": "ONDANSETRON LQ.PAR. 2 MG/ML X 4",
+      "presentacion": "SOL.INY. 2 MG/ML CJ X AMP(S) X"
+    },
+    "LOSATAN SOLIDO ORAL 100MG VIA ORAL CADA DIA (MEDICACION PROPIA)": {
+      "codigo": "3409005",
+      "descripcion": "LOSARTAN SOLIDO ORAL 50 MG",
+      "presentacion": "TAB/CAP/COMP. 50 MG CJ X BLIST("
+    },
+    "LOSARTAN 100 MG VO CADA DIA, MEDICACION PROPIA.": {
+      "codigo": "3409005",
+      "descripcion": "LOSARTAN SOLIDO ORAL 50 MG",
+      "presentacion": "TAB/CAP/COMP. 50 MG CJ X BLIST("
+    },
+    "AMOXICILINA + ACIDO CLAVULANICO 500 MG + 125 MG, TOMAR 1 TABLETA VO CADA 8": {
+      "codigo": "3801021",
+      "descripcion": "AMOXICILINA + ACIDO CLAVULANICO",
+      "presentacion": "TAB/CAP/COMP. 500 MG + 125 MG C"
+    },
+    "OMEPRAZOL 20 MG, TOMAR 1 CAPSULA VO CADA 24 HORAS POR 7 DIAS.": {
+      "codigo": "3202004",
+      "descripcion": "OMEPRAZOL SOLIDO ORAL",
+      "presentacion": "TAB/CAP/COMP. 20 MG CJ X BLIST("
+    },
+    "FUROSEMIDA 40 MG VO CADA DIA, MEDICACION PROPIA.": {
+      "codigo": "3403003",
+      "descripcion": "FUROSEMIDA SOLIDO ORAL  40 MG",
+      "presentacion": "TAB/CAP/COMP. 40 MG CJ X BLIST("
+    },
+    "ACIDO CLAVULANICO 625 MG VIA ORAL CADA 8 HORAS POR 5 DIAS": {
+      "codigo": "3801021",
+      "descripcion": "AMOXICILINA + ACIDO CLAVULANICO",
+      "presentacion": "TAB/CAP/COMP. 500 MG + 125 MG C"
+    },
+    "OMEPRAZOL 20MG TOMAR UNA VIA ORAL CADA 24 HORAS POR 7 DIAS": {
+      "codigo": "3202004",
+      "descripcion": "OMEPRAZOL SOLIDO ORAL",
+      "presentacion": "TAB/CAP/COMP. 20 MG CJ X BLIST("
+    },
+    "SULFALACINA 500MG VO QD": {
+      "codigo": "3207006",
+      "descripcion": "SULFASALAZINA SOLIDO ORAL",
+      "presentacion": "TAB/CAP/COMP. 500 MG CJ X BLIST"
+    },
+    "I. ACIDO ASCORBICO 1 GR": {
+      "codigo": "3211013",
+      "descripcion": "ACIDO ASCORBICO LIQUIDO PARENTER",
+      "presentacion": "SOL.INY. 100 MG/ML CJ X AMP(S)"
+    },
+    "SOLUCION SALINA 0.9% 1000 ML VIA VENOSA A 40ML/H": {
+      "codigo": "3305027",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 0,9% X",
+      "presentacion": "SOL.INY. 0,9% FUN/BOL X 1.000 M"
+    },
+    "AMPICILINA + SULBACTAM 1.5 GR IV CADA 8 HORAS (5)": {
+      "codigo": "3801018",
+      "descripcion": "AMPICILINA + SULBACTAM SOLIDO PA",
+      "presentacion": "POL.INY. 1.000 MG + 500 MG CJ X"
+    },
+    "SULBACTAM 1.5 GRAMO IV CADA 8 HORAS (4)": {
+      "codigo": "3801018",
+      "descripcion": "AMPICILINA + SULBACTAM SOLIDO PA",
+      "presentacion": "POL.INY. 1.000 MG + 500 MG CJ X"
+    },
+    "SOLUCION SALINA 0.9% 1500CC VIA VENOSA PASAR A 40ML/H": {
+      "codigo": "3305027",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 0,9% X",
+      "presentacion": "SOL.INY. 0,9% FUN/BOL X 1.000 M"
+    },
+    "AMPICILINA / SULBACTAM 1.5GR INTRAVENOSO CADA 8 HORAS (5)": {
+      "codigo": "3801018",
+      "descripcion": "AMPICILINA + SULBACTAM SOLIDO PA",
+      "presentacion": "POL.INY. 1.000 MG + 500 MG CJ X"
+    },
+    "SOLUCION SALINA AL 0.9% PASAR 1000CC IV CADA 12 HORAS A 80 ML POR HORA": {
+      "codigo": "3305027",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 0,9% X",
+      "presentacion": "SOL.INY. 0,9% FUN/BOL X 1.000 M"
+    },
+    "OMEPRAZOL LIQUIDO PARENTERAL 40 MG IV CADA 12 HORAS": {
+      "codigo": "3202006",
+      "descripcion": "OMEPRAZOL SOLIDO PARENTERAL",
+      "presentacion": "POL.INY. 40 MG CJ X VIAL(ES) C/"
+    },
+    "FUNCION RENAL SIN DETERIORO SIGNIFICATIVO, CON CREATININA 1.19 MG/DL Y UREA": {
+      "codigo": "3401011",
+      "descripcion": "EPINEFRINA (ADRENALINA) LIQUIDO",
+      "presentacion": "SOL.INY. 1 MG/ML CJ X AMP(S) X"
+    },
+    "DEXTROSA AL 10% EN H2O 300ML": {
+      "codigo": "3305016",
+      "descripcion": "CARBOHIDRATOS (DEXTROSA EN AGUA)",
+      "presentacion": "SOL.INY. 5% FUN/BOL X 1.000 ML"
+    },
+    "AMINOACIDOS AL 15% 250ML": {
+      "codigo": "3305010",
+      "descripcion": "AMINOACIDOS LQ.PAR. 15% X 500 ML",
+      "presentacion": "SOL.INY. 15% CJ X FCO/FUN X 500"
+    },
+    "LIPIDOS AL 20% 300ML": {
+      "codigo": "3305013",
+      "descripcion": "EMULSIONES GRASAS (LIPIDOS) LQ.P",
+      "presentacion": "SUSP/EMUL.INY. 20% FCO DE VIDRI"
+    },
+    "SOLETROL NA 60 ML": {
+      "codigo": "3305062",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 3,4 MEQ",
+      "presentacion": "SOL.INY. 3,4 MEQ/ML (20%) CJ X"
+    },
+    "SOLETROL K 40ML": {
+      "codigo": "3305060",
+      "descripcion": "CLORURO DE POTASIO LIQUIDO PAREN",
+      "presentacion": "SOL.INY. 2 mEq/ml (20%) amp x 1"
+    },
+    "GLUCONATO CA 20ML": {
+      "codigo": "3212001",
+      "descripcion": "CALCIO GLUCONATO LIQUIDO PARENTE",
+      "presentacion": "SOL.INY. 10% CJ X AMP(S) X 10 M"
+    },
+    "COMPLEJO B 5ML": {
+      "codigo": "3211010",
+      "descripcion": "COMPLEJO B LQ.PAR. N/D X 10 ML",
+      "presentacion": "SOL.INY. (B1: 100 MG|B6: 100 MG"
+    },
+    "HEPARINA SODICA 0.01 ML": {
+      "codigo": "3301008",
+      "descripcion": "HEPARINA (NO FRACCIONADA) LQ.PAR",
+      "presentacion": "SOL.INY. 5.000 UI/ML CJ X AMP(S"
+    },
+    "AMPICILINA + SULBACTAM 1.5 GR IV CADA 8 HORAS (6)": {
+      "codigo": "3801018",
+      "descripcion": "AMPICILINA + SULBACTAM SOLIDO PA",
+      "presentacion": "POL.INY. 1.000 MG + 500 MG CJ X"
+    },
+    "SULBACTAM 1.5 GRAMO IV CADA 8 HORAS (5)": {
+      "codigo": "3801018",
+      "descripcion": "AMPICILINA + SULBACTAM SOLIDO PA",
+      "presentacion": "POL.INY. 1.000 MG + 500 MG CJ X"
+    },
+    "SOLUCION SALINA 0.9% 1600 CC IV A 40 ML/H": {
+      "codigo": "3305027",
+      "descripcion": "CLORURO DE SODIO LQ.PAR. 0,9% X",
+      "presentacion": "SOL.INY. 0,9% FUN/BOL X 1.000 M"
+    },
+    "OMEPRAZOL 40 MG IV 30 MIN PREVIO A CIRUGIA": {
+      "codigo": "3202006",
+      "descripcion": "OMEPRAZOL SOLIDO PARENTERAL",
+      "presentacion": "POL.INY. 40 MG CJ X VIAL(ES) C/"
+    },
+    "AMPICILINA + SULBACTAM 1.5 GR IV CADA 8 HORAS (1)": {
+      "codigo": "3801018",
+      "descripcion": "AMPICILINA + SULBACTAM SOLIDO PA",
+      "presentacion": "POL.INY. 1.000 MG + 500 MG CJ X"
+    }
+  },
+  "out_of_stock_codes": {
+    "3305014": "CARBOHIDRATOS (DEXTROSA EN AGUA)",
+    "3305060": "CLORURO DE POTASIO LIQUIDO PAREN",
+    "3409006": "LOSARTAN SOLIDO ORAL 100 MG",
+    "3203004": "METOCLOPRAMIDA LIQUIDO PARENTERA",
+    "4103028": "LEVETIRACETAM SOLIDO ORAL",
+    "3409005": "LOSARTAN SOLIDO ORAL 50 MG",
+    "3210002": "INSULINA HUMANA NPH (ACCION INTE",
+    "3202004": "OMEPRAZOL SOLIDO ORAL",
+    "4106003": "FLUOXETINA SOLIDO ORAL",
+    "4105014": "QUETIAPINA SOLIDO ORAL",
+    "4106002": "AMITRIPTILINA SOLIDO ORAL",
+    "3206008": "LACTULOSA LIQUIDO ORAL",
+    "3604002": "TAMSULOSINA SOLIDO ORAL  0,4 MG",
+    "4105015": "QUETIAPINA SOLIDO ORAL",
+    "3210005": "METFORMINA SOLIDO ORAL 850 MG",
+    "3901162": "ABEMACICLIB SOLIDO ORAL 150 MG",
+    "3702014": "PREDNISONA SOLIDO ORAL",
+    "4503005": "ACETILCISTEINA LIQUIDO PARENTERAL",
+    "3703001": "LEVOTIROXINA SODICA SOLIDO ORAL",
+    "3210020": "DAPAGLIFLOZINA SOLIDO ORAL 10 MG",
+    "3210003": "METFORMINA SOLIDO ORAL 500 MG",
+    "3403004": "FUROSEMIDA LIQUIDO PARENTERAL 10",
+    "3801081": "NITROFURANTOINA SOLIDO ORAL",
+    "4101016": "LIDOCAINA S/EPIN. LQ.PAR. 2% - 5",
+    "1907001": "FILGASTRIM AMP 150MG",
+    "3604004": "DUTASTERIDA SOLIDO ORAL 0,5 MG",
+    "3305017": "CARBOHIDRATOS (DEXTROSA EN AGUA)",
+    "3305062": "CLORURO DE SODIO LQ.PAR. 3,4 MEQ",
+    "3301008": "HEPARINA (NO FRACCIONADA) LQ.PAR"
+  },
+  "window_geometry": "1237x618+235+187",
+  "acs_window_title_contains": "5250",
+  "acs_macro_hotkey_modifiers": "control,shift",
+  "macro_timeout_seconds": 600,
+  "acs_read_hotkey_key": "l",
+  "acs_exec_hotkey_key": "e",
+  "acs_confirm_hotkey_key": "c"
+}

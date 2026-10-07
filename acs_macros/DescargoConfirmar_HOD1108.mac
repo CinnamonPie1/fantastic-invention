@@ -1,0 +1,47 @@
+<HAScript name="DescargoConfirmar_HOD1108" description="Confirma descargo F24 F3 F11 F3 F3 y responde por portapapeles" timeout="120000" pausetime="100" promptall="true" blockinput="true" author="" creationdate="" supressclearevents="false" usevars="true" ignorepauseforenhancedtn="true" delayifnotenhancedtn="0" ignorepausetimeforenhancedtn="true" continueontimeout="false">
+  <import>
+    <type class="java.awt.Toolkit" name="Toolkit" />
+    <type class="java.awt.datatransfer.Clipboard" name="Clipboard" />
+    <type class="java.awt.datatransfer.StringSelection" name="StringSelection" />
+  </import>
+  <vars>
+    <create name="$herramientas$" type="Toolkit" value="" />
+    <create name="$portapapeles$" type="Clipboard" value="" />
+    <create name="$seleccion$" type="StringSelection" value="" />
+  </vars>
+  <screen name="F24" entryscreen="true" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;[pf24]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="F3a" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="F3a" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;[pf3]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="F11" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="F11" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;[pf11]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="F3b" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="F3b" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;[pf3]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="F3c" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="F3c" entryscreen="false" exitscreen="false" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions><input value="&apos;[pf3]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" /></actions>
+    <nextscreens timeout="30000"><nextscreen name="Listo" /></nextscreens><recolimit value="10000" />
+  </screen>
+  <screen name="Listo" entryscreen="false" exitscreen="true" transient="false">
+    <description><oia status="NOTINHIBITED" optional="false" invertmatch="false" /></description>
+    <actions>
+      <varupdate name="$herramientas$" value="$Toolkit.getDefaultToolkit()$" />
+      <varupdate name="$portapapeles$" value="$herramientas.getSystemClipboard()$" />
+      <varupdate name="$seleccion$" value="$new StringSelection(&apos;###DESCARGO_HOD1108_CONFIRM_OK###&apos;)$" />
+      <perform value="$portapapeles.setContents($seleccion$, $seleccion$)$" />
+    </actions>
+    <nextscreens timeout="0"></nextscreens><recolimit value="10000" />
+  </screen>
+</HAScript>

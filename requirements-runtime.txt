@@ -1,0 +1,2 @@
+# La aplicación usa únicamente la biblioteca estándar de Python en tiempo de ejecución.
+# Tkinter debe estar disponible en la instalación de Python usada para ejecutar/compilar.

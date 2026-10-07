@@ -1,0 +1,442 @@
+<HAScript name="DescargoLeer_HOD1108" description="Captura nota para DescargoMedicacion en ACS/HOD 11.0.8" timeout="600000" pausetime="50" promptall="true" blockinput="true" author="" creationdate="" supressclearevents="false" usevars="true" ignorepauseforenhancedtn="true" delayifnotenhancedtn="0" ignorepausetimeforenhancedtn="true" continueontimeout="false">
+
+    <import>
+        <type class="java.lang.String" name="JString" />
+        <type class="java.lang.StringBuilder" name="SB" />
+        <type class="java.lang.System" name="JSystem" />
+        <type class="java.awt.Toolkit" name="Toolkit" />
+        <type class="java.awt.datatransfer.Clipboard" name="Clipboard" />
+        <type class="java.awt.datatransfer.StringSelection" name="StringSelection" />
+    </import>
+    <vars>
+        <create name="$nl$" type="string" value="&apos;&apos;" />
+        <create name="$resultado$" type="SB" value="$new SB()$" />
+        <create name="$lineaObj$" type="JString" value="" />
+        <create name="$pagina$" type="string" value="&apos;&apos;" />
+        <create name="$paginaAnterior$" type="string" value="&apos;&apos;" />
+        <create name="$paginas$" type="integer" value="0" />
+        <create name="$primera$" type="boolean" value="true" />
+        <create name="$textoSalida$" type="string" value="&apos;&apos;" />
+        <create name="$paciente$" type="string" value="&apos;&apos;" />
+        <create name="$respuesta$" type="SB" value="$new SB()$" />
+        <create name="$herramientas$" type="Toolkit" value="" />
+        <create name="$portapapeles$" type="Clipboard" value="" />
+        <create name="$seleccion$" type="StringSelection" value="" />
+        <create name="$l1$" type="string" value="&apos;&apos;" />
+        <create name="$l2$" type="string" value="&apos;&apos;" />
+        <create name="$l3$" type="string" value="&apos;&apos;" />
+        <create name="$l4$" type="string" value="&apos;&apos;" />
+        <create name="$l5$" type="string" value="&apos;&apos;" />
+        <create name="$l6$" type="string" value="&apos;&apos;" />
+        <create name="$l7$" type="string" value="&apos;&apos;" />
+        <create name="$l8$" type="string" value="&apos;&apos;" />
+        <create name="$l9$" type="string" value="&apos;&apos;" />
+        <create name="$l10$" type="string" value="&apos;&apos;" />
+        <create name="$l11$" type="string" value="&apos;&apos;" />
+        <create name="$l12$" type="string" value="&apos;&apos;" />
+        <create name="$l13$" type="string" value="&apos;&apos;" />
+        <create name="$l14$" type="string" value="&apos;&apos;" />
+        <create name="$l15$" type="string" value="&apos;&apos;" />
+        <create name="$l16$" type="string" value="&apos;&apos;" />
+        <create name="$l17$" type="string" value="&apos;&apos;" />
+        <create name="$l18$" type="string" value="&apos;&apos;" />
+        <create name="$l19$" type="string" value="&apos;&apos;" />
+        <create name="$l20$" type="string" value="&apos;&apos;" />
+        <create name="$l21$" type="string" value="&apos;&apos;" />
+        <create name="$l22$" type="string" value="&apos;&apos;" />
+        <create name="$l23$" type="string" value="&apos;&apos;" />
+        <create name="$l24$" type="string" value="&apos;&apos;" />
+        <create name="$h1$" type="integer" value="0" />
+        <create name="$h2$" type="integer" value="0" />
+        <create name="$h3$" type="integer" value="0" />
+        <create name="$h4$" type="integer" value="0" />
+        <create name="$h5$" type="integer" value="0" />
+        <create name="$h6$" type="integer" value="0" />
+        <create name="$h7$" type="integer" value="0" />
+        <create name="$h8$" type="integer" value="0" />
+        <create name="$h9$" type="integer" value="0" />
+        <create name="$h10$" type="integer" value="0" />
+        <create name="$h11$" type="integer" value="0" />
+        <create name="$h12$" type="integer" value="0" />
+        <create name="$h13$" type="integer" value="0" />
+        <create name="$h14$" type="integer" value="0" />
+        <create name="$h15$" type="integer" value="0" />
+        <create name="$h16$" type="integer" value="0" />
+        <create name="$h17$" type="integer" value="0" />
+        <create name="$h18$" type="integer" value="0" />
+        <create name="$h19$" type="integer" value="0" />
+        <create name="$h20$" type="integer" value="0" />
+        <create name="$h21$" type="integer" value="0" />
+        <create name="$h22$" type="integer" value="0" />
+        <create name="$h23$" type="integer" value="0" />
+        <create name="$h24$" type="integer" value="0" />
+        <create name="$ph1$" type="integer" value="0" />
+        <create name="$ph2$" type="integer" value="0" />
+        <create name="$ph3$" type="integer" value="0" />
+        <create name="$ph4$" type="integer" value="0" />
+        <create name="$ph5$" type="integer" value="0" />
+        <create name="$ph6$" type="integer" value="0" />
+        <create name="$ph7$" type="integer" value="0" />
+        <create name="$ph8$" type="integer" value="0" />
+        <create name="$ph9$" type="integer" value="0" />
+        <create name="$ph10$" type="integer" value="0" />
+        <create name="$ph11$" type="integer" value="0" />
+        <create name="$ph12$" type="integer" value="0" />
+        <create name="$ph13$" type="integer" value="0" />
+        <create name="$ph14$" type="integer" value="0" />
+        <create name="$ph15$" type="integer" value="0" />
+        <create name="$ph16$" type="integer" value="0" />
+        <create name="$ph17$" type="integer" value="0" />
+        <create name="$ph18$" type="integer" value="0" />
+        <create name="$ph19$" type="integer" value="0" />
+        <create name="$ph20$" type="integer" value="0" />
+        <create name="$ph21$" type="integer" value="0" />
+        <create name="$ph22$" type="integer" value="0" />
+        <create name="$ph23$" type="integer" value="0" />
+        <create name="$ph24$" type="integer" value="0" />
+    </vars>
+
+    <screen name="LeerPagina" entryscreen="true" exitscreen="false" transient="false">
+        <description>
+            <oia status="NOTINHIBITED" optional="false" invertmatch="false" />
+        </description>
+        <actions>
+            <extract name="&apos;Pagina completa&apos;" planetype="TEXT_PLANE" srow="1" scol="1" erow="24" ecol="80" unwrap="false" continuous="false" assigntovar="$pagina$" />
+            <extract name="&apos;Paciente&apos;" planetype="TEXT_PLANE" srow="3" scol="26" erow="3" ecol="65" unwrap="false" continuous="false" assigntovar="$paciente$" />
+            <extract name="&apos;Linea 1&apos;" planetype="TEXT_PLANE" srow="1" scol="1" erow="1" ecol="80" unwrap="false" continuous="false" assigntovar="$l1$" />
+            <extract name="&apos;Linea 2&apos;" planetype="TEXT_PLANE" srow="2" scol="1" erow="2" ecol="80" unwrap="false" continuous="false" assigntovar="$l2$" />
+            <extract name="&apos;Linea 3&apos;" planetype="TEXT_PLANE" srow="3" scol="1" erow="3" ecol="80" unwrap="false" continuous="false" assigntovar="$l3$" />
+            <extract name="&apos;Linea 4&apos;" planetype="TEXT_PLANE" srow="4" scol="1" erow="4" ecol="80" unwrap="false" continuous="false" assigntovar="$l4$" />
+            <extract name="&apos;Linea 5&apos;" planetype="TEXT_PLANE" srow="5" scol="1" erow="5" ecol="80" unwrap="false" continuous="false" assigntovar="$l5$" />
+            <extract name="&apos;Linea 6&apos;" planetype="TEXT_PLANE" srow="6" scol="1" erow="6" ecol="80" unwrap="false" continuous="false" assigntovar="$l6$" />
+            <extract name="&apos;Linea 7&apos;" planetype="TEXT_PLANE" srow="7" scol="1" erow="7" ecol="80" unwrap="false" continuous="false" assigntovar="$l7$" />
+            <extract name="&apos;Linea 8&apos;" planetype="TEXT_PLANE" srow="8" scol="1" erow="8" ecol="80" unwrap="false" continuous="false" assigntovar="$l8$" />
+            <extract name="&apos;Linea 9&apos;" planetype="TEXT_PLANE" srow="9" scol="1" erow="9" ecol="80" unwrap="false" continuous="false" assigntovar="$l9$" />
+            <extract name="&apos;Linea 10&apos;" planetype="TEXT_PLANE" srow="10" scol="1" erow="10" ecol="80" unwrap="false" continuous="false" assigntovar="$l10$" />
+            <extract name="&apos;Linea 11&apos;" planetype="TEXT_PLANE" srow="11" scol="1" erow="11" ecol="80" unwrap="false" continuous="false" assigntovar="$l11$" />
+            <extract name="&apos;Linea 12&apos;" planetype="TEXT_PLANE" srow="12" scol="1" erow="12" ecol="80" unwrap="false" continuous="false" assigntovar="$l12$" />
+            <extract name="&apos;Linea 13&apos;" planetype="TEXT_PLANE" srow="13" scol="1" erow="13" ecol="80" unwrap="false" continuous="false" assigntovar="$l13$" />
+            <extract name="&apos;Linea 14&apos;" planetype="TEXT_PLANE" srow="14" scol="1" erow="14" ecol="80" unwrap="false" continuous="false" assigntovar="$l14$" />
+            <extract name="&apos;Linea 15&apos;" planetype="TEXT_PLANE" srow="15" scol="1" erow="15" ecol="80" unwrap="false" continuous="false" assigntovar="$l15$" />
+            <extract name="&apos;Linea 16&apos;" planetype="TEXT_PLANE" srow="16" scol="1" erow="16" ecol="80" unwrap="false" continuous="false" assigntovar="$l16$" />
+            <extract name="&apos;Linea 17&apos;" planetype="TEXT_PLANE" srow="17" scol="1" erow="17" ecol="80" unwrap="false" continuous="false" assigntovar="$l17$" />
+            <extract name="&apos;Linea 18&apos;" planetype="TEXT_PLANE" srow="18" scol="1" erow="18" ecol="80" unwrap="false" continuous="false" assigntovar="$l18$" />
+            <extract name="&apos;Linea 19&apos;" planetype="TEXT_PLANE" srow="19" scol="1" erow="19" ecol="80" unwrap="false" continuous="false" assigntovar="$l19$" />
+            <extract name="&apos;Linea 20&apos;" planetype="TEXT_PLANE" srow="20" scol="1" erow="20" ecol="80" unwrap="false" continuous="false" assigntovar="$l20$" />
+            <extract name="&apos;Linea 21&apos;" planetype="TEXT_PLANE" srow="21" scol="1" erow="21" ecol="80" unwrap="false" continuous="false" assigntovar="$l21$" />
+            <extract name="&apos;Linea 22&apos;" planetype="TEXT_PLANE" srow="22" scol="1" erow="22" ecol="80" unwrap="false" continuous="false" assigntovar="$l22$" />
+            <extract name="&apos;Linea 23&apos;" planetype="TEXT_PLANE" srow="23" scol="1" erow="23" ecol="80" unwrap="false" continuous="false" assigntovar="$l23$" />
+            <extract name="&apos;Linea 24&apos;" planetype="TEXT_PLANE" srow="24" scol="1" erow="24" ecol="80" unwrap="false" continuous="false" assigntovar="$l24$" />
+            <varupdate name="$nl$" value="$JSystem.getProperty(&apos;line.separator&apos;)$" />
+            <varupdate name="$lineaObj$" value="$new JString($l1$)$" />
+            <varupdate name="$h1$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l2$)$" />
+            <varupdate name="$h2$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l3$)$" />
+            <varupdate name="$h3$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l4$)$" />
+            <varupdate name="$h4$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l5$)$" />
+            <varupdate name="$h5$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l6$)$" />
+            <varupdate name="$h6$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l7$)$" />
+            <varupdate name="$h7$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l8$)$" />
+            <varupdate name="$h8$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l9$)$" />
+            <varupdate name="$h9$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l10$)$" />
+            <varupdate name="$h10$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l11$)$" />
+            <varupdate name="$h11$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l12$)$" />
+            <varupdate name="$h12$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l13$)$" />
+            <varupdate name="$h13$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l14$)$" />
+            <varupdate name="$h14$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l15$)$" />
+            <varupdate name="$h15$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l16$)$" />
+            <varupdate name="$h16$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l17$)$" />
+            <varupdate name="$h17$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l18$)$" />
+            <varupdate name="$h18$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l19$)$" />
+            <varupdate name="$h19$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l20$)$" />
+            <varupdate name="$h20$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l21$)$" />
+            <varupdate name="$h21$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l22$)$" />
+            <varupdate name="$h22$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l23$)$" />
+            <varupdate name="$h23$" value="$lineaObj.hashCode()$" />
+            <varupdate name="$lineaObj$" value="$new JString($l24$)$" />
+            <varupdate name="$h24$" value="$lineaObj.hashCode()$" />
+            <if condition="$primera$">
+                <perform value="$resultado.append($l1$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l2$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l3$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l4$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l5$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l6$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l7$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l8$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l9$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l10$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l11$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l12$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l13$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l14$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l15$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l16$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l17$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l18$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l19$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l20$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l21$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l22$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l23$)$" />
+                <perform value="$resultado.append($nl$)$" />
+                <perform value="$resultado.append($l24$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h1$ != $ph1$ &amp;&amp; $h1$ != $ph2$ &amp;&amp; $h1$ != $ph3$ &amp;&amp; $h1$ != $ph4$ &amp;&amp; $h1$ != $ph5$ &amp;&amp; $h1$ != $ph6$ &amp;&amp; $h1$ != $ph7$ &amp;&amp; $h1$ != $ph8$ &amp;&amp; $h1$ != $ph9$ &amp;&amp; $h1$ != $ph10$ &amp;&amp; $h1$ != $ph11$ &amp;&amp; $h1$ != $ph12$ &amp;&amp; $h1$ != $ph13$ &amp;&amp; $h1$ != $ph14$ &amp;&amp; $h1$ != $ph15$ &amp;&amp; $h1$ != $ph16$ &amp;&amp; $h1$ != $ph17$ &amp;&amp; $h1$ != $ph18$ &amp;&amp; $h1$ != $ph19$ &amp;&amp; $h1$ != $ph20$ &amp;&amp; $h1$ != $ph21$ &amp;&amp; $h1$ != $ph22$ &amp;&amp; $h1$ != $ph23$ &amp;&amp; $h1$ != $ph24$">
+                <perform value="$resultado.append($l1$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h2$ != $ph1$ &amp;&amp; $h2$ != $ph2$ &amp;&amp; $h2$ != $ph3$ &amp;&amp; $h2$ != $ph4$ &amp;&amp; $h2$ != $ph5$ &amp;&amp; $h2$ != $ph6$ &amp;&amp; $h2$ != $ph7$ &amp;&amp; $h2$ != $ph8$ &amp;&amp; $h2$ != $ph9$ &amp;&amp; $h2$ != $ph10$ &amp;&amp; $h2$ != $ph11$ &amp;&amp; $h2$ != $ph12$ &amp;&amp; $h2$ != $ph13$ &amp;&amp; $h2$ != $ph14$ &amp;&amp; $h2$ != $ph15$ &amp;&amp; $h2$ != $ph16$ &amp;&amp; $h2$ != $ph17$ &amp;&amp; $h2$ != $ph18$ &amp;&amp; $h2$ != $ph19$ &amp;&amp; $h2$ != $ph20$ &amp;&amp; $h2$ != $ph21$ &amp;&amp; $h2$ != $ph22$ &amp;&amp; $h2$ != $ph23$ &amp;&amp; $h2$ != $ph24$">
+                <perform value="$resultado.append($l2$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h3$ != $ph1$ &amp;&amp; $h3$ != $ph2$ &amp;&amp; $h3$ != $ph3$ &amp;&amp; $h3$ != $ph4$ &amp;&amp; $h3$ != $ph5$ &amp;&amp; $h3$ != $ph6$ &amp;&amp; $h3$ != $ph7$ &amp;&amp; $h3$ != $ph8$ &amp;&amp; $h3$ != $ph9$ &amp;&amp; $h3$ != $ph10$ &amp;&amp; $h3$ != $ph11$ &amp;&amp; $h3$ != $ph12$ &amp;&amp; $h3$ != $ph13$ &amp;&amp; $h3$ != $ph14$ &amp;&amp; $h3$ != $ph15$ &amp;&amp; $h3$ != $ph16$ &amp;&amp; $h3$ != $ph17$ &amp;&amp; $h3$ != $ph18$ &amp;&amp; $h3$ != $ph19$ &amp;&amp; $h3$ != $ph20$ &amp;&amp; $h3$ != $ph21$ &amp;&amp; $h3$ != $ph22$ &amp;&amp; $h3$ != $ph23$ &amp;&amp; $h3$ != $ph24$">
+                <perform value="$resultado.append($l3$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h4$ != $ph1$ &amp;&amp; $h4$ != $ph2$ &amp;&amp; $h4$ != $ph3$ &amp;&amp; $h4$ != $ph4$ &amp;&amp; $h4$ != $ph5$ &amp;&amp; $h4$ != $ph6$ &amp;&amp; $h4$ != $ph7$ &amp;&amp; $h4$ != $ph8$ &amp;&amp; $h4$ != $ph9$ &amp;&amp; $h4$ != $ph10$ &amp;&amp; $h4$ != $ph11$ &amp;&amp; $h4$ != $ph12$ &amp;&amp; $h4$ != $ph13$ &amp;&amp; $h4$ != $ph14$ &amp;&amp; $h4$ != $ph15$ &amp;&amp; $h4$ != $ph16$ &amp;&amp; $h4$ != $ph17$ &amp;&amp; $h4$ != $ph18$ &amp;&amp; $h4$ != $ph19$ &amp;&amp; $h4$ != $ph20$ &amp;&amp; $h4$ != $ph21$ &amp;&amp; $h4$ != $ph22$ &amp;&amp; $h4$ != $ph23$ &amp;&amp; $h4$ != $ph24$">
+                <perform value="$resultado.append($l4$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h5$ != $ph1$ &amp;&amp; $h5$ != $ph2$ &amp;&amp; $h5$ != $ph3$ &amp;&amp; $h5$ != $ph4$ &amp;&amp; $h5$ != $ph5$ &amp;&amp; $h5$ != $ph6$ &amp;&amp; $h5$ != $ph7$ &amp;&amp; $h5$ != $ph8$ &amp;&amp; $h5$ != $ph9$ &amp;&amp; $h5$ != $ph10$ &amp;&amp; $h5$ != $ph11$ &amp;&amp; $h5$ != $ph12$ &amp;&amp; $h5$ != $ph13$ &amp;&amp; $h5$ != $ph14$ &amp;&amp; $h5$ != $ph15$ &amp;&amp; $h5$ != $ph16$ &amp;&amp; $h5$ != $ph17$ &amp;&amp; $h5$ != $ph18$ &amp;&amp; $h5$ != $ph19$ &amp;&amp; $h5$ != $ph20$ &amp;&amp; $h5$ != $ph21$ &amp;&amp; $h5$ != $ph22$ &amp;&amp; $h5$ != $ph23$ &amp;&amp; $h5$ != $ph24$">
+                <perform value="$resultado.append($l5$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h6$ != $ph1$ &amp;&amp; $h6$ != $ph2$ &amp;&amp; $h6$ != $ph3$ &amp;&amp; $h6$ != $ph4$ &amp;&amp; $h6$ != $ph5$ &amp;&amp; $h6$ != $ph6$ &amp;&amp; $h6$ != $ph7$ &amp;&amp; $h6$ != $ph8$ &amp;&amp; $h6$ != $ph9$ &amp;&amp; $h6$ != $ph10$ &amp;&amp; $h6$ != $ph11$ &amp;&amp; $h6$ != $ph12$ &amp;&amp; $h6$ != $ph13$ &amp;&amp; $h6$ != $ph14$ &amp;&amp; $h6$ != $ph15$ &amp;&amp; $h6$ != $ph16$ &amp;&amp; $h6$ != $ph17$ &amp;&amp; $h6$ != $ph18$ &amp;&amp; $h6$ != $ph19$ &amp;&amp; $h6$ != $ph20$ &amp;&amp; $h6$ != $ph21$ &amp;&amp; $h6$ != $ph22$ &amp;&amp; $h6$ != $ph23$ &amp;&amp; $h6$ != $ph24$">
+                <perform value="$resultado.append($l6$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h7$ != $ph1$ &amp;&amp; $h7$ != $ph2$ &amp;&amp; $h7$ != $ph3$ &amp;&amp; $h7$ != $ph4$ &amp;&amp; $h7$ != $ph5$ &amp;&amp; $h7$ != $ph6$ &amp;&amp; $h7$ != $ph7$ &amp;&amp; $h7$ != $ph8$ &amp;&amp; $h7$ != $ph9$ &amp;&amp; $h7$ != $ph10$ &amp;&amp; $h7$ != $ph11$ &amp;&amp; $h7$ != $ph12$ &amp;&amp; $h7$ != $ph13$ &amp;&amp; $h7$ != $ph14$ &amp;&amp; $h7$ != $ph15$ &amp;&amp; $h7$ != $ph16$ &amp;&amp; $h7$ != $ph17$ &amp;&amp; $h7$ != $ph18$ &amp;&amp; $h7$ != $ph19$ &amp;&amp; $h7$ != $ph20$ &amp;&amp; $h7$ != $ph21$ &amp;&amp; $h7$ != $ph22$ &amp;&amp; $h7$ != $ph23$ &amp;&amp; $h7$ != $ph24$">
+                <perform value="$resultado.append($l7$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h8$ != $ph1$ &amp;&amp; $h8$ != $ph2$ &amp;&amp; $h8$ != $ph3$ &amp;&amp; $h8$ != $ph4$ &amp;&amp; $h8$ != $ph5$ &amp;&amp; $h8$ != $ph6$ &amp;&amp; $h8$ != $ph7$ &amp;&amp; $h8$ != $ph8$ &amp;&amp; $h8$ != $ph9$ &amp;&amp; $h8$ != $ph10$ &amp;&amp; $h8$ != $ph11$ &amp;&amp; $h8$ != $ph12$ &amp;&amp; $h8$ != $ph13$ &amp;&amp; $h8$ != $ph14$ &amp;&amp; $h8$ != $ph15$ &amp;&amp; $h8$ != $ph16$ &amp;&amp; $h8$ != $ph17$ &amp;&amp; $h8$ != $ph18$ &amp;&amp; $h8$ != $ph19$ &amp;&amp; $h8$ != $ph20$ &amp;&amp; $h8$ != $ph21$ &amp;&amp; $h8$ != $ph22$ &amp;&amp; $h8$ != $ph23$ &amp;&amp; $h8$ != $ph24$">
+                <perform value="$resultado.append($l8$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h9$ != $ph1$ &amp;&amp; $h9$ != $ph2$ &amp;&amp; $h9$ != $ph3$ &amp;&amp; $h9$ != $ph4$ &amp;&amp; $h9$ != $ph5$ &amp;&amp; $h9$ != $ph6$ &amp;&amp; $h9$ != $ph7$ &amp;&amp; $h9$ != $ph8$ &amp;&amp; $h9$ != $ph9$ &amp;&amp; $h9$ != $ph10$ &amp;&amp; $h9$ != $ph11$ &amp;&amp; $h9$ != $ph12$ &amp;&amp; $h9$ != $ph13$ &amp;&amp; $h9$ != $ph14$ &amp;&amp; $h9$ != $ph15$ &amp;&amp; $h9$ != $ph16$ &amp;&amp; $h9$ != $ph17$ &amp;&amp; $h9$ != $ph18$ &amp;&amp; $h9$ != $ph19$ &amp;&amp; $h9$ != $ph20$ &amp;&amp; $h9$ != $ph21$ &amp;&amp; $h9$ != $ph22$ &amp;&amp; $h9$ != $ph23$ &amp;&amp; $h9$ != $ph24$">
+                <perform value="$resultado.append($l9$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h10$ != $ph1$ &amp;&amp; $h10$ != $ph2$ &amp;&amp; $h10$ != $ph3$ &amp;&amp; $h10$ != $ph4$ &amp;&amp; $h10$ != $ph5$ &amp;&amp; $h10$ != $ph6$ &amp;&amp; $h10$ != $ph7$ &amp;&amp; $h10$ != $ph8$ &amp;&amp; $h10$ != $ph9$ &amp;&amp; $h10$ != $ph10$ &amp;&amp; $h10$ != $ph11$ &amp;&amp; $h10$ != $ph12$ &amp;&amp; $h10$ != $ph13$ &amp;&amp; $h10$ != $ph14$ &amp;&amp; $h10$ != $ph15$ &amp;&amp; $h10$ != $ph16$ &amp;&amp; $h10$ != $ph17$ &amp;&amp; $h10$ != $ph18$ &amp;&amp; $h10$ != $ph19$ &amp;&amp; $h10$ != $ph20$ &amp;&amp; $h10$ != $ph21$ &amp;&amp; $h10$ != $ph22$ &amp;&amp; $h10$ != $ph23$ &amp;&amp; $h10$ != $ph24$">
+                <perform value="$resultado.append($l10$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h11$ != $ph1$ &amp;&amp; $h11$ != $ph2$ &amp;&amp; $h11$ != $ph3$ &amp;&amp; $h11$ != $ph4$ &amp;&amp; $h11$ != $ph5$ &amp;&amp; $h11$ != $ph6$ &amp;&amp; $h11$ != $ph7$ &amp;&amp; $h11$ != $ph8$ &amp;&amp; $h11$ != $ph9$ &amp;&amp; $h11$ != $ph10$ &amp;&amp; $h11$ != $ph11$ &amp;&amp; $h11$ != $ph12$ &amp;&amp; $h11$ != $ph13$ &amp;&amp; $h11$ != $ph14$ &amp;&amp; $h11$ != $ph15$ &amp;&amp; $h11$ != $ph16$ &amp;&amp; $h11$ != $ph17$ &amp;&amp; $h11$ != $ph18$ &amp;&amp; $h11$ != $ph19$ &amp;&amp; $h11$ != $ph20$ &amp;&amp; $h11$ != $ph21$ &amp;&amp; $h11$ != $ph22$ &amp;&amp; $h11$ != $ph23$ &amp;&amp; $h11$ != $ph24$">
+                <perform value="$resultado.append($l11$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h12$ != $ph1$ &amp;&amp; $h12$ != $ph2$ &amp;&amp; $h12$ != $ph3$ &amp;&amp; $h12$ != $ph4$ &amp;&amp; $h12$ != $ph5$ &amp;&amp; $h12$ != $ph6$ &amp;&amp; $h12$ != $ph7$ &amp;&amp; $h12$ != $ph8$ &amp;&amp; $h12$ != $ph9$ &amp;&amp; $h12$ != $ph10$ &amp;&amp; $h12$ != $ph11$ &amp;&amp; $h12$ != $ph12$ &amp;&amp; $h12$ != $ph13$ &amp;&amp; $h12$ != $ph14$ &amp;&amp; $h12$ != $ph15$ &amp;&amp; $h12$ != $ph16$ &amp;&amp; $h12$ != $ph17$ &amp;&amp; $h12$ != $ph18$ &amp;&amp; $h12$ != $ph19$ &amp;&amp; $h12$ != $ph20$ &amp;&amp; $h12$ != $ph21$ &amp;&amp; $h12$ != $ph22$ &amp;&amp; $h12$ != $ph23$ &amp;&amp; $h12$ != $ph24$">
+                <perform value="$resultado.append($l12$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h13$ != $ph1$ &amp;&amp; $h13$ != $ph2$ &amp;&amp; $h13$ != $ph3$ &amp;&amp; $h13$ != $ph4$ &amp;&amp; $h13$ != $ph5$ &amp;&amp; $h13$ != $ph6$ &amp;&amp; $h13$ != $ph7$ &amp;&amp; $h13$ != $ph8$ &amp;&amp; $h13$ != $ph9$ &amp;&amp; $h13$ != $ph10$ &amp;&amp; $h13$ != $ph11$ &amp;&amp; $h13$ != $ph12$ &amp;&amp; $h13$ != $ph13$ &amp;&amp; $h13$ != $ph14$ &amp;&amp; $h13$ != $ph15$ &amp;&amp; $h13$ != $ph16$ &amp;&amp; $h13$ != $ph17$ &amp;&amp; $h13$ != $ph18$ &amp;&amp; $h13$ != $ph19$ &amp;&amp; $h13$ != $ph20$ &amp;&amp; $h13$ != $ph21$ &amp;&amp; $h13$ != $ph22$ &amp;&amp; $h13$ != $ph23$ &amp;&amp; $h13$ != $ph24$">
+                <perform value="$resultado.append($l13$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h14$ != $ph1$ &amp;&amp; $h14$ != $ph2$ &amp;&amp; $h14$ != $ph3$ &amp;&amp; $h14$ != $ph4$ &amp;&amp; $h14$ != $ph5$ &amp;&amp; $h14$ != $ph6$ &amp;&amp; $h14$ != $ph7$ &amp;&amp; $h14$ != $ph8$ &amp;&amp; $h14$ != $ph9$ &amp;&amp; $h14$ != $ph10$ &amp;&amp; $h14$ != $ph11$ &amp;&amp; $h14$ != $ph12$ &amp;&amp; $h14$ != $ph13$ &amp;&amp; $h14$ != $ph14$ &amp;&amp; $h14$ != $ph15$ &amp;&amp; $h14$ != $ph16$ &amp;&amp; $h14$ != $ph17$ &amp;&amp; $h14$ != $ph18$ &amp;&amp; $h14$ != $ph19$ &amp;&amp; $h14$ != $ph20$ &amp;&amp; $h14$ != $ph21$ &amp;&amp; $h14$ != $ph22$ &amp;&amp; $h14$ != $ph23$ &amp;&amp; $h14$ != $ph24$">
+                <perform value="$resultado.append($l14$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h15$ != $ph1$ &amp;&amp; $h15$ != $ph2$ &amp;&amp; $h15$ != $ph3$ &amp;&amp; $h15$ != $ph4$ &amp;&amp; $h15$ != $ph5$ &amp;&amp; $h15$ != $ph6$ &amp;&amp; $h15$ != $ph7$ &amp;&amp; $h15$ != $ph8$ &amp;&amp; $h15$ != $ph9$ &amp;&amp; $h15$ != $ph10$ &amp;&amp; $h15$ != $ph11$ &amp;&amp; $h15$ != $ph12$ &amp;&amp; $h15$ != $ph13$ &amp;&amp; $h15$ != $ph14$ &amp;&amp; $h15$ != $ph15$ &amp;&amp; $h15$ != $ph16$ &amp;&amp; $h15$ != $ph17$ &amp;&amp; $h15$ != $ph18$ &amp;&amp; $h15$ != $ph19$ &amp;&amp; $h15$ != $ph20$ &amp;&amp; $h15$ != $ph21$ &amp;&amp; $h15$ != $ph22$ &amp;&amp; $h15$ != $ph23$ &amp;&amp; $h15$ != $ph24$">
+                <perform value="$resultado.append($l15$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h16$ != $ph1$ &amp;&amp; $h16$ != $ph2$ &amp;&amp; $h16$ != $ph3$ &amp;&amp; $h16$ != $ph4$ &amp;&amp; $h16$ != $ph5$ &amp;&amp; $h16$ != $ph6$ &amp;&amp; $h16$ != $ph7$ &amp;&amp; $h16$ != $ph8$ &amp;&amp; $h16$ != $ph9$ &amp;&amp; $h16$ != $ph10$ &amp;&amp; $h16$ != $ph11$ &amp;&amp; $h16$ != $ph12$ &amp;&amp; $h16$ != $ph13$ &amp;&amp; $h16$ != $ph14$ &amp;&amp; $h16$ != $ph15$ &amp;&amp; $h16$ != $ph16$ &amp;&amp; $h16$ != $ph17$ &amp;&amp; $h16$ != $ph18$ &amp;&amp; $h16$ != $ph19$ &amp;&amp; $h16$ != $ph20$ &amp;&amp; $h16$ != $ph21$ &amp;&amp; $h16$ != $ph22$ &amp;&amp; $h16$ != $ph23$ &amp;&amp; $h16$ != $ph24$">
+                <perform value="$resultado.append($l16$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h17$ != $ph1$ &amp;&amp; $h17$ != $ph2$ &amp;&amp; $h17$ != $ph3$ &amp;&amp; $h17$ != $ph4$ &amp;&amp; $h17$ != $ph5$ &amp;&amp; $h17$ != $ph6$ &amp;&amp; $h17$ != $ph7$ &amp;&amp; $h17$ != $ph8$ &amp;&amp; $h17$ != $ph9$ &amp;&amp; $h17$ != $ph10$ &amp;&amp; $h17$ != $ph11$ &amp;&amp; $h17$ != $ph12$ &amp;&amp; $h17$ != $ph13$ &amp;&amp; $h17$ != $ph14$ &amp;&amp; $h17$ != $ph15$ &amp;&amp; $h17$ != $ph16$ &amp;&amp; $h17$ != $ph17$ &amp;&amp; $h17$ != $ph18$ &amp;&amp; $h17$ != $ph19$ &amp;&amp; $h17$ != $ph20$ &amp;&amp; $h17$ != $ph21$ &amp;&amp; $h17$ != $ph22$ &amp;&amp; $h17$ != $ph23$ &amp;&amp; $h17$ != $ph24$">
+                <perform value="$resultado.append($l17$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h18$ != $ph1$ &amp;&amp; $h18$ != $ph2$ &amp;&amp; $h18$ != $ph3$ &amp;&amp; $h18$ != $ph4$ &amp;&amp; $h18$ != $ph5$ &amp;&amp; $h18$ != $ph6$ &amp;&amp; $h18$ != $ph7$ &amp;&amp; $h18$ != $ph8$ &amp;&amp; $h18$ != $ph9$ &amp;&amp; $h18$ != $ph10$ &amp;&amp; $h18$ != $ph11$ &amp;&amp; $h18$ != $ph12$ &amp;&amp; $h18$ != $ph13$ &amp;&amp; $h18$ != $ph14$ &amp;&amp; $h18$ != $ph15$ &amp;&amp; $h18$ != $ph16$ &amp;&amp; $h18$ != $ph17$ &amp;&amp; $h18$ != $ph18$ &amp;&amp; $h18$ != $ph19$ &amp;&amp; $h18$ != $ph20$ &amp;&amp; $h18$ != $ph21$ &amp;&amp; $h18$ != $ph22$ &amp;&amp; $h18$ != $ph23$ &amp;&amp; $h18$ != $ph24$">
+                <perform value="$resultado.append($l18$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h19$ != $ph1$ &amp;&amp; $h19$ != $ph2$ &amp;&amp; $h19$ != $ph3$ &amp;&amp; $h19$ != $ph4$ &amp;&amp; $h19$ != $ph5$ &amp;&amp; $h19$ != $ph6$ &amp;&amp; $h19$ != $ph7$ &amp;&amp; $h19$ != $ph8$ &amp;&amp; $h19$ != $ph9$ &amp;&amp; $h19$ != $ph10$ &amp;&amp; $h19$ != $ph11$ &amp;&amp; $h19$ != $ph12$ &amp;&amp; $h19$ != $ph13$ &amp;&amp; $h19$ != $ph14$ &amp;&amp; $h19$ != $ph15$ &amp;&amp; $h19$ != $ph16$ &amp;&amp; $h19$ != $ph17$ &amp;&amp; $h19$ != $ph18$ &amp;&amp; $h19$ != $ph19$ &amp;&amp; $h19$ != $ph20$ &amp;&amp; $h19$ != $ph21$ &amp;&amp; $h19$ != $ph22$ &amp;&amp; $h19$ != $ph23$ &amp;&amp; $h19$ != $ph24$">
+                <perform value="$resultado.append($l19$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h20$ != $ph1$ &amp;&amp; $h20$ != $ph2$ &amp;&amp; $h20$ != $ph3$ &amp;&amp; $h20$ != $ph4$ &amp;&amp; $h20$ != $ph5$ &amp;&amp; $h20$ != $ph6$ &amp;&amp; $h20$ != $ph7$ &amp;&amp; $h20$ != $ph8$ &amp;&amp; $h20$ != $ph9$ &amp;&amp; $h20$ != $ph10$ &amp;&amp; $h20$ != $ph11$ &amp;&amp; $h20$ != $ph12$ &amp;&amp; $h20$ != $ph13$ &amp;&amp; $h20$ != $ph14$ &amp;&amp; $h20$ != $ph15$ &amp;&amp; $h20$ != $ph16$ &amp;&amp; $h20$ != $ph17$ &amp;&amp; $h20$ != $ph18$ &amp;&amp; $h20$ != $ph19$ &amp;&amp; $h20$ != $ph20$ &amp;&amp; $h20$ != $ph21$ &amp;&amp; $h20$ != $ph22$ &amp;&amp; $h20$ != $ph23$ &amp;&amp; $h20$ != $ph24$">
+                <perform value="$resultado.append($l20$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h21$ != $ph1$ &amp;&amp; $h21$ != $ph2$ &amp;&amp; $h21$ != $ph3$ &amp;&amp; $h21$ != $ph4$ &amp;&amp; $h21$ != $ph5$ &amp;&amp; $h21$ != $ph6$ &amp;&amp; $h21$ != $ph7$ &amp;&amp; $h21$ != $ph8$ &amp;&amp; $h21$ != $ph9$ &amp;&amp; $h21$ != $ph10$ &amp;&amp; $h21$ != $ph11$ &amp;&amp; $h21$ != $ph12$ &amp;&amp; $h21$ != $ph13$ &amp;&amp; $h21$ != $ph14$ &amp;&amp; $h21$ != $ph15$ &amp;&amp; $h21$ != $ph16$ &amp;&amp; $h21$ != $ph17$ &amp;&amp; $h21$ != $ph18$ &amp;&amp; $h21$ != $ph19$ &amp;&amp; $h21$ != $ph20$ &amp;&amp; $h21$ != $ph21$ &amp;&amp; $h21$ != $ph22$ &amp;&amp; $h21$ != $ph23$ &amp;&amp; $h21$ != $ph24$">
+                <perform value="$resultado.append($l21$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h22$ != $ph1$ &amp;&amp; $h22$ != $ph2$ &amp;&amp; $h22$ != $ph3$ &amp;&amp; $h22$ != $ph4$ &amp;&amp; $h22$ != $ph5$ &amp;&amp; $h22$ != $ph6$ &amp;&amp; $h22$ != $ph7$ &amp;&amp; $h22$ != $ph8$ &amp;&amp; $h22$ != $ph9$ &amp;&amp; $h22$ != $ph10$ &amp;&amp; $h22$ != $ph11$ &amp;&amp; $h22$ != $ph12$ &amp;&amp; $h22$ != $ph13$ &amp;&amp; $h22$ != $ph14$ &amp;&amp; $h22$ != $ph15$ &amp;&amp; $h22$ != $ph16$ &amp;&amp; $h22$ != $ph17$ &amp;&amp; $h22$ != $ph18$ &amp;&amp; $h22$ != $ph19$ &amp;&amp; $h22$ != $ph20$ &amp;&amp; $h22$ != $ph21$ &amp;&amp; $h22$ != $ph22$ &amp;&amp; $h22$ != $ph23$ &amp;&amp; $h22$ != $ph24$">
+                <perform value="$resultado.append($l22$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h23$ != $ph1$ &amp;&amp; $h23$ != $ph2$ &amp;&amp; $h23$ != $ph3$ &amp;&amp; $h23$ != $ph4$ &amp;&amp; $h23$ != $ph5$ &amp;&amp; $h23$ != $ph6$ &amp;&amp; $h23$ != $ph7$ &amp;&amp; $h23$ != $ph8$ &amp;&amp; $h23$ != $ph9$ &amp;&amp; $h23$ != $ph10$ &amp;&amp; $h23$ != $ph11$ &amp;&amp; $h23$ != $ph12$ &amp;&amp; $h23$ != $ph13$ &amp;&amp; $h23$ != $ph14$ &amp;&amp; $h23$ != $ph15$ &amp;&amp; $h23$ != $ph16$ &amp;&amp; $h23$ != $ph17$ &amp;&amp; $h23$ != $ph18$ &amp;&amp; $h23$ != $ph19$ &amp;&amp; $h23$ != $ph20$ &amp;&amp; $h23$ != $ph21$ &amp;&amp; $h23$ != $ph22$ &amp;&amp; $h23$ != $ph23$ &amp;&amp; $h23$ != $ph24$">
+                <perform value="$resultado.append($l23$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <if condition="!$primera$ &amp;&amp; $h24$ != $ph1$ &amp;&amp; $h24$ != $ph2$ &amp;&amp; $h24$ != $ph3$ &amp;&amp; $h24$ != $ph4$ &amp;&amp; $h24$ != $ph5$ &amp;&amp; $h24$ != $ph6$ &amp;&amp; $h24$ != $ph7$ &amp;&amp; $h24$ != $ph8$ &amp;&amp; $h24$ != $ph9$ &amp;&amp; $h24$ != $ph10$ &amp;&amp; $h24$ != $ph11$ &amp;&amp; $h24$ != $ph12$ &amp;&amp; $h24$ != $ph13$ &amp;&amp; $h24$ != $ph14$ &amp;&amp; $h24$ != $ph15$ &amp;&amp; $h24$ != $ph16$ &amp;&amp; $h24$ != $ph17$ &amp;&amp; $h24$ != $ph18$ &amp;&amp; $h24$ != $ph19$ &amp;&amp; $h24$ != $ph20$ &amp;&amp; $h24$ != $ph21$ &amp;&amp; $h24$ != $ph22$ &amp;&amp; $h24$ != $ph23$ &amp;&amp; $h24$ != $ph24$">
+                <perform value="$resultado.append($l24$)$" />
+                <perform value="$resultado.append($nl$)$" />
+            </if>
+            <varupdate name="$ph1$" value="$h1$" />
+            <varupdate name="$ph2$" value="$h2$" />
+            <varupdate name="$ph3$" value="$h3$" />
+            <varupdate name="$ph4$" value="$h4$" />
+            <varupdate name="$ph5$" value="$h5$" />
+            <varupdate name="$ph6$" value="$h6$" />
+            <varupdate name="$ph7$" value="$h7$" />
+            <varupdate name="$ph8$" value="$h8$" />
+            <varupdate name="$ph9$" value="$h9$" />
+            <varupdate name="$ph10$" value="$h10$" />
+            <varupdate name="$ph11$" value="$h11$" />
+            <varupdate name="$ph12$" value="$h12$" />
+            <varupdate name="$ph13$" value="$h13$" />
+            <varupdate name="$ph14$" value="$h14$" />
+            <varupdate name="$ph15$" value="$h15$" />
+            <varupdate name="$ph16$" value="$h16$" />
+            <varupdate name="$ph17$" value="$h17$" />
+            <varupdate name="$ph18$" value="$h18$" />
+            <varupdate name="$ph19$" value="$h19$" />
+            <varupdate name="$ph20$" value="$h20$" />
+            <varupdate name="$ph21$" value="$h21$" />
+            <varupdate name="$ph22$" value="$h22$" />
+            <varupdate name="$ph23$" value="$h23$" />
+            <varupdate name="$ph24$" value="$h24$" />
+            <varupdate name="$paginaAnterior$" value="$pagina$" />
+            <varupdate name="$paginas$" value="$paginas$ + 1" />
+            <varupdate name="$primera$" value="false" />
+        </actions>
+        <nextscreens timeout="60000">
+            <nextscreen name="FinalPorTexto" />
+            <nextscreen name="LimitePaginas" />
+            <nextscreen name="Avanzar" />
+        </nextscreens>
+        <recolimit value="10000" />
+    </screen>
+
+    <screen name="FinalPorTexto" entryscreen="false" exitscreen="true" transient="false">
+        <description>
+            <oia status="DONTCARE" optional="false" invertmatch="false" />
+            <string value="&apos;FINAL&apos;" row="21" col="1" erow="22" ecol="80" casesense="false" wrap="true" optional="false" invertmatch="false" />
+        </description>
+        <actions>
+            <varupdate name="$textoSalida$" value="$resultado.toString()$" />
+            <perform value="$respuesta.setLength(0)$" />
+            <perform value="$respuesta.append(&apos;###DESCARGO_HOD1108_READ_OK###&apos;)$" />
+            <perform value="$respuesta.append($nl$)$" />
+            <perform value="$respuesta.append($paciente$)$" />
+            <perform value="$respuesta.append($nl$)$" />
+            <perform value="$respuesta.append($textoSalida$)$" />
+            <varupdate name="$herramientas$" value="$Toolkit.getDefaultToolkit()$" />
+            <varupdate name="$portapapeles$" value="$herramientas.getSystemClipboard()$" />
+            <varupdate name="$seleccion$" value="$new StringSelection($respuesta.toString()$)$" />
+            <perform value="$portapapeles.setContents($seleccion$, $seleccion$)$" />
+        </actions>
+        <nextscreens timeout="0"></nextscreens>
+        <recolimit value="10000" />
+    </screen>
+
+    <screen name="LimitePaginas" entryscreen="false" exitscreen="true" transient="false">
+        <description>
+            <oia status="DONTCARE" optional="false" invertmatch="false" />
+            <condition value="$paginas$ &gt;= 200" optional="false" invertmatch="false" />
+        </description>
+        <actions>
+            <varupdate name="$textoSalida$" value="$resultado.toString()$" />
+            <perform value="$respuesta.setLength(0)$" />
+            <perform value="$respuesta.append(&apos;###DESCARGO_HOD1108_READ_OK###&apos;)$" />
+            <perform value="$respuesta.append($nl$)$" />
+            <perform value="$respuesta.append($paciente$)$" />
+            <perform value="$respuesta.append($nl$)$" />
+            <perform value="$respuesta.append($textoSalida$)$" />
+            <varupdate name="$herramientas$" value="$Toolkit.getDefaultToolkit()$" />
+            <varupdate name="$portapapeles$" value="$herramientas.getSystemClipboard()$" />
+            <varupdate name="$seleccion$" value="$new StringSelection($respuesta.toString()$)$" />
+            <perform value="$portapapeles.setContents($seleccion$, $seleccion$)$" />
+        </actions>
+        <nextscreens timeout="0"></nextscreens>
+        <recolimit value="10000" />
+    </screen>
+
+    <screen name="Avanzar" entryscreen="false" exitscreen="false" transient="false">
+        <description>
+            <oia status="NOTINHIBITED" optional="false" invertmatch="false" />
+        </description>
+        <actions>
+            <input value="&apos;[pagedn]&apos;" row="0" col="0" movecursor="true" xlatehostkeys="true" encrypted="false" />
+            <pause value="50" />
+        </actions>
+        <nextscreens timeout="60000">
+            <nextscreen name="FinalPorDuplicado" />
+            <nextscreen name="LeerPagina" />
+        </nextscreens>
+        <recolimit value="10000" />
+    </screen>
+
+    <screen name="FinalPorDuplicado" entryscreen="false" exitscreen="true" transient="false">
+        <description>
+            <oia status="DONTCARE" optional="false" invertmatch="false" />
+            <string value="$paginaAnterior$" row="1" col="1" erow="24" ecol="80" casesense="true" wrap="true" optional="false" invertmatch="false" />
+        </description>
+        <actions>
+            <varupdate name="$textoSalida$" value="$resultado.toString()$" />
+            <perform value="$respuesta.setLength(0)$" />
+            <perform value="$respuesta.append(&apos;###DESCARGO_HOD1108_READ_OK###&apos;)$" />
+            <perform value="$respuesta.append($nl$)$" />
+            <perform value="$respuesta.append($paciente$)$" />
+            <perform value="$respuesta.append($nl$)$" />
+            <perform value="$respuesta.append($textoSalida$)$" />
+            <varupdate name="$herramientas$" value="$Toolkit.getDefaultToolkit()$" />
+            <varupdate name="$portapapeles$" value="$herramientas.getSystemClipboard()$" />
+            <varupdate name="$seleccion$" value="$new StringSelection($respuesta.toString()$)$" />
+            <perform value="$portapapeles.setContents($seleccion$, $seleccion$)$" />
+        </actions>
+        <nextscreens timeout="0"></nextscreens>
+        <recolimit value="10000" />
+    </screen>
+
+</HAScript>
